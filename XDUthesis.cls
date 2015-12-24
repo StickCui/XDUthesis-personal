@@ -25,7 +25,7 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{XDUthesis}
-[2015/12/02 0.1 Xidian University Thesis Template]
+[2015/12/24 0.1.1 Xidian University Thesis Template]
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
 \def\version{0.1}
@@ -128,15 +128,14 @@
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmattertrue}
 
-\def\XDU@textcircled#1{%
-  \ifnum \value{#1} <10 \textcircled{\zihao{-6}\arabic{#1}}
-  \else
-    \ifnum \value{#1} <100
-      \textcircled{\zihao{7}\arabic{#1}}
-    \fi
-  \fi}
-\renewcommand{\thefootnote}{\XDU@textcircled{footnote}}
-\renewcommand{\thempfootnote}{\XDU@textcircled{mpfootnote}}
+
+\RequirePackage{blindtext}
+\@newctr{footnote}[page]
+\@newctr{mpfootnote}[page]
+
+\RequirePackage{pifont}
+\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
+\renewcommand\thempfootnote{\ding{\numexpr171+\value{mpfootnote}}}
 \ctexset{
  chapter/beforeskip = {20pt},
  chapter/titleformat = {\zihao{3}\heiti\centering},%

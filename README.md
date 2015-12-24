@@ -19,7 +19,11 @@ Xidian University thesis template
 
 为方便 Windows 用户，专门写好了两种编译脚本；还有示例可供学习使用。
 
-使用前，请仔细阅读。
+使用前，请仔细阅读 XDUthesis.pdf 模板用户手册。
+
+里面的**生成模板.bat**是根据**XDUthesis.dtx**和**XDUthesis.ins**生成模板文档类**XDUthesis.cls**和模板配置文件**XDUthesis.cfg**的；由于本人已经为小白用户生成好了，下载后无需再运行了。
+
+里面的**MakeXDUthesisPDF.bat**根据**XDUthesis.dtx**来生成用户说明文档的，由于本人已经为小白用户生成好了，下载后无需再运行了。
 
 ## 模板文件介绍
 	XDUthesis.dtx & 模板文档类与说明文档混排文件\\

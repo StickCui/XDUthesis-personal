@@ -35,7 +35,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{XDUthesis.dtx}[2015/12/02 0.1 Xidian University Thesis Template]
+\ProvidesFile{XDUthesis.dtx}[2015/12/24 0.1.1 Xidian University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 
 \usepackage[left=4cm,right=3cm,top=3cm,bottom=2cm]{geometry}
@@ -218,7 +218,8 @@
 % \pkg{ifxetex} & \pkg{xcolor} & \pkg{fontenc} & \pkg{amsmath} & \pkg{amssymb} & \pkg{graphicx}\\
 % \pkg{ntheorem} & \pkg{natbib} & \pkg{appendix} & \pkg{listings} & \pkg{longtable} & \pkg{multirow}\\
 % \pkg{hhline} & \pkg{tabularx} & \pkg{array} & \pkg{makecell} & \pkg{colortbl} & \pkg{booktabs}\\
-% \pkg{hyperref} & \pkg{geometry} & \pkg{fancyhdr} &\pkg{CJKfntef}& \pkg{subcaption} & \pkg{setspace}\\
+% \pkg{hyperref} & \pkg{geometry} & \pkg{fancyhdr} & \pkg{CJKfntef} & \pkg{subcaption} & \pkg{setspace}\\
+% \pkg{blindtext} & \pkg{pifont} &&&&\\
 % \hline
 % \end{tabular}
 % \end{table}
@@ -675,7 +676,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{XDUthesis}
 %<cfg>\ProvidesFile{XDUthesis.cfg}
-%<cls|cfg>[2015/12/02 0.1 Xidian University Thesis Template]
+%<cls|cfg>[2015/12/24 0.1.1 Xidian University Thesis Template]
 %    \end{macrocode}
 % \subsection{功能类宏包相关}
 % 本部分将模板能用到的大部分红包加载在了此处，并进行了相关参数的配置。
@@ -763,7 +764,7 @@
 \setstretch{1.5}%设置行距1.5倍
 %    \end{macrocode}
 %
-% 此部分设置以及定义全文不同部分用到的页眉页脚格式。
+% 此部分设置以及定义全文不同部分用到的页眉格式。
 %    \begin{macrocode}
 \RequirePackage{fancyhdr}
 \setlength{\headheight}{15pt}
@@ -831,15 +832,24 @@
   \if@openright\cleardoublepage\else\clearpage\fi
   \@mainmattertrue}
 
-\def\XDU@textcircled#1{%
-  \ifnum \value{#1} <10 \textcircled{\zihao{-6}\arabic{#1}}
-  \else
-    \ifnum \value{#1} <100
-      \textcircled{\zihao{7}\arabic{#1}}
-    \fi
-  \fi}
-\renewcommand{\thefootnote}{\XDU@textcircled{footnote}}
-\renewcommand{\thempfootnote}{\XDU@textcircled{mpfootnote}}
+%    \end{macrocode}
+%
+% 页脚设置部分，每页页脚重新编号，编号带圈。
+% \changes{v0.1.1}{2015/12/24}{修改脚注每页重新编号，优化带圈编号项。}
+%    \begin{macrocode}
+% 这种处理方法章首页会从2开始编号，不太好处理
+% \RequirePackage{perpage}
+% \MakePerPage{footnote}
+% \MakePerPage{mpfootnote}
+
+% 这个处理较好。
+\RequirePackage{blindtext}
+\@newctr{footnote}[page]
+\@newctr{mpfootnote}[page]
+
+\RequirePackage{pifont}
+\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}}
+\renewcommand\thempfootnote{\ding{\numexpr171+\value{mpfootnote}}}
 %    \end{macrocode}
 %
 % 标题编号项设置，包括：章节标题、公式编号、图标标题
