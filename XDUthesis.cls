@@ -8,7 +8,7 @@
 %% 
 %% This is a generated file.
 %% 
-%% Copyright (C) 2015-2015 by Stick Cui <Stick_Cui@163.com>
+%% Copyright (C) 2015-2016 by Stick Cui <Stick_Cui@163.com>
 %% 
 %% This file may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.3c
@@ -25,7 +25,7 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{XDUthesis}
-[2015/12/24 0.1.1 Xidian University Thesis Template]
+[2016/2/22 0.1.2 Xidian University Thesis Template]
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
 \def\version{0.1}
@@ -184,43 +184,41 @@
 \XDU@parse@keywords{enkeywords}
 \newcommand{\chaptersize}[1][\zihao{3}]{#1}
 
-\def\@abstract{}
-\newbox\@abstract%
-\setbox\@abstract\hbox{}%
-\def\abstract{\bgroup\global\setbox\@abstract\vbox\bgroup\hsize\textwidth
-\leftskip0cm\rightskip0cm}%
-\def\endabstract{\egroup\egroup}
+\long\@xp\def\@xp\collect@@body\@xp#\@xp1\@xp\end\@xp#\@xp2\@xp{%
+  \collect@@body{#1}\end{#2}}
+\long\@xp\def\@xp\push@begins\@xp#\@xp1\@xp\begin\@xp#\@xp2\@xp{%
+  \push@begins{#1}\begin{#2}}
+\long\@xp\def\@xp\addto@envbody\@xp#\@xp1\@xp{%
+  \addto@envbody{#1}}
+\newcommand{\XDU@@cabstract}[1]{\long\gdef\XDU@cabstract{#1}}
+\newenvironment{abstract}{\collect@body\XDU@@cabstract}{}
 
-\def\@enabstract{}
-\newbox\@enabstract%
-\setbox\@enabstract\hbox{}%
-\def\enabstract{\bgroup\global\setbox\@enabstract\vbox\bgroup\hsize\textwidth
-\leftskip0cm\rightskip0cm}%
-\def\endenabstract{\egroup\egroup}
+\newcommand{\XDU@@eabstract}[1]{\long\gdef\XDU@eabstract{#1}}
+\newenvironment{enabstract}{\collect@body\XDU@@eabstract}{}
 
 
 \def\make@abstract{%
 \cleardoublepage%
 \pagenumbering{roman}
-\thispagestyle{myheadings}
+\pagestyle{myheadings}
 \phantomsection
 \vspace*{2em}
 \centerline{\heiti\chaptersize\XDU@abstractname}\vskip5pt\par%
 \vspace*{2em}
-\noindent\usebox\@abstract\par%
+\XDU@cabstract%
 \par\vspace*{2em}\noindent{\heiti\zihao{-4}{\XDU@keywordsname：\XDU@keywords}}%
 \vspace*{1em}%
 \cleardoublepage%
-\thispagestyle{headings}
+\pagestyle{headings}
 \phantomsection
 \vspace*{2em}
 \centerline{\textbf{\chaptersize\XDU@enabstractname}}\vskip5pt\par%
 \vspace*{2em}
-\noindent\usebox\@enabstract\par%
+\XDU@eabstract%
 \par\vspace*{2em}\noindent{\bf\zihao{-4}
     \XDU@enkeywordsname:~\XDU@enkeywords}%
 \vspace*{1em}%
-\newpage
+\cleardoublepage
 }
 \def\maketitle{
 \begin{titlepage}

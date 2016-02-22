@@ -1042,12 +1042,22 @@ FUNCTION {network}
 FUNCTION {format.translator}
 { translator empty$
     { "" }
-    { translator format.names
-      translator num.names$ #1 >
-	{ ", 译" * }
-	{ ", 译" * }
-      if$
-    }
+	{
+	lang empty$
+	    { translator format.names
+		  translator num.names$ #1 >
+		{ ", translate" * }
+		{ ", translates" * }
+		  if$
+		}
+		{ translator format.names
+		  translator num.names$ #1 >
+		{ ", 译" * }
+		{ ", 译" * }
+		  if$
+		}
+	if$
+	}
   if$
 }
 
