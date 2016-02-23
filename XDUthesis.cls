@@ -25,10 +25,10 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{XDUthesis}
-[2016/2/22 0.1.2 Xidian University Thesis Template]
+[2016/02/23 0.1.3 Xidian University Thesis Template]
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1}
+\def\version{0.1.3}
 \LoadClass[cs4size,a4paper,UTF8]{ctexbook}[2015/05/16]
 \RequirePackage{ifxetex}
 \RequirePackage{xcolor}
@@ -149,6 +149,10 @@
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \renewcommand{\thesubtable}{(\alph{subtable})}
 \captionsetup{font={small}}%设置图表标题五号字
+\renewcommand{\bibfont}{\small}%设置参考文献字体为五号字
+
+\DeclareRobustCommand\onlinecite{\@onlinecite}
+\def\@onlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
 
 \theorembodyfont{\rmfamily\songti}
 \theoremheaderfont{\rmfamily\heiti}
@@ -282,9 +286,9 @@
 
 \vspace*{8em}
 
-{\songti\zihao{4}论文作者：\CJKunderline{\phantom{\qquad~空~格~啊~}}（签字）\quad 时间：\@date
+{\songti\zihao{4}\XDU@authornametitle\CJKunderline{\phantom{\qquad\qquad\qquad\qquad}}\XDU@signedname\quad\XDU@timename\@date
 
-指导教师已阅：\CJKunderline{\phantom{~空~格~啊~}}（签字）\quad 时间：\@date}
+\XDU@supervisorhasread\CJKunderline{\phantom{\qquad\qquad\qquad}}\XDU@signedname\quad\XDU@timename\@date}
 
 \make@abstract%
 

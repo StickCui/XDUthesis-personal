@@ -35,7 +35,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{XDUthesis.dtx}[2016/2/22 0.1.2 Xidian University Thesis Template]
+\ProvidesFile{XDUthesis.dtx}[2016/02/23 0.1.3 Xidian University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 
 \usepackage[left=4cm,right=3cm,top=3cm,bottom=2cm]{geometry}
@@ -577,6 +577,9 @@
 % \end{itemize}
 % 
 % \end{enumerate}
+% \begin{macro}{\onlinecite}
+% 非上角标式参考文献引用命令。
+% \end{macro}
 % 
 % \subsection{环境}
 % 
@@ -676,7 +679,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{XDUthesis}
 %<cfg>\ProvidesFile{XDUthesis.cfg}
-%<cls|cfg>[2016/2/22 0.1.2 Xidian University Thesis Template]
+%<cls|cfg>[2016/02/23 0.1.3 Xidian University Thesis Template]
 %    \end{macrocode}
 % \subsection{功能类宏包相关}
 % 本部分将模板能用到的大部分红包加载在了此处，并进行了相关参数的配置。
@@ -685,7 +688,7 @@
 %<*cls>
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1}
+\def\version{0.1.3}
 \LoadClass[cs4size,a4paper,UTF8]{ctexbook}[2015/05/16]
 %    \end{macrocode}
 % 加载 \pkg{ifxetex} 用于判断编译引擎是否为xetex
@@ -853,6 +856,7 @@
 %    \end{macrocode}
 %
 % 标题编号项设置，包括：章节标题、公式编号、图标标题
+% \changes{v0.1.3}{2016/02/23}{修复参考文献字体为五号字体，增加非角标参考文献命令}
 %    \begin{macrocode}
 \ctexset{
  chapter/beforeskip = {20pt},
@@ -867,6 +871,10 @@
 \renewcommand{\thesubfigure}{(\alph{subfigure})}
 \renewcommand{\thesubtable}{(\alph{subtable})}
 \captionsetup{font={small}}%设置图表标题五号字
+\renewcommand{\bibfont}{\small}%设置参考文献字体为五号字
+
+\DeclareRobustCommand\onlinecite{\@onlinecite}
+\def\@onlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
 
 \theorembodyfont{\rmfamily\songti}
 \theoremheaderfont{\rmfamily\heiti}
@@ -1041,6 +1049,7 @@
 % \subsection{封面部分}
 % 这里生成封面、摘要、目录；
 %\begin{macro}{\maketitle}
+% \changes{v0.1.3}{2016/02/23}{增加关键字定义，使得模板更加规范。}
 %    \begin{macrocode}
 \def\maketitle{
 \begin{titlepage}
@@ -1106,9 +1115,9 @@
 
 \vspace*{8em}
 
-{\songti\zihao{4}论文作者：\CJKunderline{\phantom{\qquad~空~格~啊~}}（签字）\quad 时间：\@date
+{\songti\zihao{4}\XDU@authornametitle\CJKunderline{\phantom{\qquad\qquad\qquad\qquad}}\XDU@signedname\quad\XDU@timename\@date
 
-指导教师已阅：\CJKunderline{\phantom{~空~格~啊~}}（签字）\quad 时间：\@date}
+\XDU@supervisorhasread\CJKunderline{\phantom{\qquad\qquad\qquad}}\XDU@signedname\quad\XDU@timename\@date}
 
 \make@abstract%
 
@@ -1120,6 +1129,7 @@
 %    \end{macrocode}
 %
 % \changes{v0.1}{2015/12/02}{对封面相关关键字进行配置}
+% \changes{v0.1.3}{2016/02/23}{增加关键字定义，使得模板更加规范。}
 %    \begin{macrocode}
 %<*cfg>
 %% 以下内容勿动
@@ -1135,6 +1145,12 @@
 \newcommand{\XDU@declaretext}{本人声明：本人所提交的毕业论文《\CJKunderline{\XDU@title}》是本人在指导教师指导下独立研究、写作成果，论文中所引用他人的无论以何种方式发布的文字、研究成果，均在论文中加以说明；
 有关教师、同学和其他人员对本文本的写作、修订提出过并为我在论文中加以采纳的意见、建议，均已在我的致谢辞中加以说明并深致谢意。\par
 本文和资料若有不实之处，本人承担一切相关责任。}
+
+
+\newcommand{\XDU@authornametitle}{论文作者：}
+\newcommand{\XDU@signedname}{（签字）}
+\newcommand{\XDU@timename}{时间：}
+\newcommand{\XDU@supervisorhasread}{指导教师已阅：}
 %% 
 %</cfg>
 %    \end{macrocode}
