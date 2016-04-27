@@ -1,15 +1,29 @@
 # XDUthesis 西安电子科技大学学位论文模板
 ---
-## 插播一条通知：本人今日（2016年02月23日）发现一个八阿哥（bug），暂未修复；详情如下：
+Xidian University thesis template
+---
+## v0.1.4 版本更新，详情如下：
+- 首先，修复了生成后的PDF复制乱码问题；
 
-ctex v2.0.2版本的套件下，使用xelatex编译的时候，如果文章中有强制将宋体加粗（即`\songti\textbf{粗体}`）的情况，生成的PDF文件中，复制出来该段文字是乱码，打印查看不影响。如果使用在封面定制中，会更严重，很不幸，本人使用了。
+- 默认使用者为Windows系统
 
-然而，使用pdflatex编译没有这种情况。
+- 默认使用华文中宋（STZhongsong）作为中易宋体（SimSun）的粗体
+	
+	原因是中易宋体根本没有粗体，强制对其加粗会造成一些问题。word的处理很投机，它对正常宋体进行了差值再计算（详情见http://blog.csdn.net/windtailljj/article/details/7422344），华文中宋与中易宋体的word加粗版很像，故而采用之。
+	
+- 对于其他系统以及不想使用华文中宋作为中易宋体粗体的用户，还添加`Fandol`参数以使用[Fandol](https://github.com/clerkma/fandol-fonts)字体族。
+	
+	Windows用户注意，启用此命令就没有了隶书（`\lishu`），幼圆（`\youyuan`），微软雅黑（`\yahei`）三个字体的预定义命令了，本文提供的范例很有可能会编译不通过；不用担心，将Chapters.tex中使用的相关命令删掉即可，如果使用批处理编译的话强行回车也行。
 
-**如有人知道如何解决，还请邮件联系本人！！！非常感谢！**（P.S. 不知道升级ctex套件能不能成功？改天有空试试。）
+- 添加`nologo`参数，封面不使用Logo
+
+- 修复封面标题英文未加黑体问题，感谢[lanthree](https://github.com/lanthree)同学
+
+- 修复英文摘要关键词名称不对的问题，感谢[lanthree](https://github.com/lanthree)同学
+
+- 此外，感谢自本模板发布以来，一直关注本模板的同学们。如果对本次的更新不满意，v0.1.3版本的做了Release，可以继续使用。
 
 ---
-Xidian University thesis template
 
 本模板目前还处于测试阶段，纯属个人爱好制作；仅仅含有本科版；
 
@@ -17,7 +31,7 @@ Xidian University thesis template
 
 ## 写在前面
 
-西安电子科技大学学位论文模板已有我校**齐飞**副教授制作 [xduthesis](https://github.com/fredqi/xduthesis).
+西安电子科技大学学位论文模板已有我校**齐飞**老师制作 [xduthesis](https://github.com/fredqi/xduthesis).
 
 本人制作基于[ctex套件v2.0.2](https://github.com/CTeX-org/ctex-kit) 中的 ctexbook, TeXLive2015 制作；
 

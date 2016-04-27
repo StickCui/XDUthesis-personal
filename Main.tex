@@ -1,4 +1,4 @@
-\documentclass{XDUthesis} %[draft]
+\documentclass{XDUthesis} %[Fandol]%[nologo]%[Fandol,nologo]%
 
 \title{基于XDUthesis模板的论文写作样例}
 \author{崔元顺}
@@ -12,6 +12,8 @@
 \school{数学与统计学院}%学院
 \supervisor{崔元顺}%指导老师
 
+%\usepackage[BoldFont]{xeCJK}
+
 \begin{document}
 
 % 摘要
@@ -20,6 +22,11 @@
 % 往PDF属性里面写下关键词信息
 \makeatletter
 \XDU@setpdf@keywords
+%\make@abstract%
+%
+%\frontmatter
+%\tableofcontents%
+%\mainmatter
 \makeatother
 
 \maketitle

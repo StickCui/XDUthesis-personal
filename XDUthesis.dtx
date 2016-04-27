@@ -35,7 +35,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{XDUthesis.dtx}[2016/02/23 0.1.3 Xidian University Thesis Template]
+\ProvidesFile{XDUthesis.dtx}[2016/04/27 0.1.4 Xidian University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 
 \usepackage[left=4cm,right=3cm,top=3cm,bottom=2cm]{geometry}
@@ -353,17 +353,17 @@
 % 以下，给出一个使用本模板写作的样例，并在注释信息中说明每一部分的作用。
 % 
 % \begin{example}
-% \documentclass{XDUthesis}
+% \documentclass{XDUthesis} %[Fandol]%[nologo]%[Fandol,nologo]%
 % \title{基于ctex套件的模板制作过程}
 % \author{崔元顺}
-% \date{2015年12月02日}%如果是今天可以是\today
+% \date{2015年12月02日}%如果是今天可以是\today或省略不写
 % %题目拆分：用于封面
 % %如果论文题目长度<=11中文字符只需填此项即可B项空着
 % \septitleA{基于ctex套件的模板}
 % %如果论文题目长度>11中文字符, 建议拆分为10+x or 11+x 将剩余x个字符填在此处。
 % \septitleB{制作过程}
-% \class{071271}%班级号
-% \schoolnumber{07127024}%学号
+% \class{0712**}%班级号
+% \schoolnumber{0712****}%学号
 % \major{统计学}%专业
 % \school{数学与统计学院}%学院
 % \supervisor{崔元顺}%指导老师
@@ -502,12 +502,12 @@
 % 
 % 其中 \verb=\fangsong= 在ubuntu字库中没有定义。在windows和founder字库中，还有 \verb=\lishu= % 和 \verb=\youyuan=。
 % 
-% \item[\textbf{\textbackslash lishu}] 隶书，CJK等价命令\verb=\CJKfamily{zhli}=；
-% \item[\textbf{\textbackslash youyuan}] 幼圆，CJK等价命令\verb=\CJKfamily{zhyou}=；
+% \item[\textbf{\textbackslash lishu}] 隶书，CJK等价命令\verb=\CJKfamily{zhli}=；Fandol字库中没有定义。
+% \item[\textbf{\textbackslash youyuan}] 幼圆，CJK等价命令\verb=\CJKfamily{zhyou}=；Fandol字库中没有定义。
 % 
 % 在windowsnew字库中，还有 \verb=\yahei=。
 % 
-% \item[\textbf{\textbackslash yahei}] 微软雅黑，CJK等价命令\verb=\CJKfamily{zhyahei}=；
+% \item[\textbf{\textbackslash yahei}] 微软雅黑，CJK等价命令\verb=\CJKfamily{zhyahei}=；Fandol字库中没有定义。
 % \end{itemize}
 % 
 % \item \textbf{下划线}
@@ -528,6 +528,13 @@
 % 将一个计数器显示为中文数字可以使用命令 \verb=\chinese{<counter>}=，将一个普通数字（整数、浮点数、分数）可以使用 \verb=\zhnumber{<number>}=，将一串阿拉伯数字转换为中文字符串可以使用 \verb=\zhdigits{<number>}=，等等。其他详见《C\TeX{} 套件手册》。\footnote{以TeXLive2015为例，命令行终端运行 \textbf{texdoc ctex} 即可。}
 % 
 % \end{enumerate}
+% 
+% \subsubsection{可选参数}
+% 使用时，在模板开始时，即\verb=\documentclass[para]{XDUthesis}=，其中para可以是以下一个或多个：
+% \begin{itemize}
+%  \item \textbf{Fandol}：使用Fandol字库，此时无幼圆、隶书、微软雅黑字体定义命令，如需使用，请自行设置
+%  \item \textbf{nologo}：封面不使用学校的Logo
+% \end{itemize}
 % 
 % \subsubsection{控制命令}
 % \begin{enumerate}
@@ -679,17 +686,41 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{XDUthesis}
 %<cfg>\ProvidesFile{XDUthesis.cfg}
-%<cls|cfg>[2016/02/23 0.1.3 Xidian University Thesis Template]
+%<cls|cfg>[2016/04/27 0.1.4 Xidian University Thesis Template]
 %    \end{macrocode}
 % \subsection{功能类宏包相关}
-% 本部分将模板能用到的大部分红包加载在了此处，并进行了相关参数的配置。
+% 本部分将模板能用到的大部分宏包加载在了此处，并进行了相关参数的配置。
 % \changes{v0.1}{2015/12/02}{本模板用到的大部分宏包及相关参数配置于此处}
+% \changes{v0.1.4}{2016/4/27}{修复生成的PDF乱码问题，新添加两个可选指令}
 %    \begin{macrocode}
 %<*cls>
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1.3}
+\def\version{0.1.4}
+
+\newif\if@nologo \@nologofalse %默认使用校徽Logo
+\newif\if@Fandol \@Fandolfalse %默认为Windows系统，使用华文中宋作为中易宋体的粗体，否则全部使用Fandol字体族
+
+\DeclareOption{nologo}{\@nologotrue}
+\DeclareOption{Fandol}{\@Fandoltrue}
+\ProcessOptions\relax
+
+%    \end{macrocode}
+% 加载 \pkg{ifthen} 用于判断传入参数。确定加载文档类型
+% \changes{v0.1.4}{2016/4/27}{非Windows系统需要修改为Fandol字体族}
+%    \begin{macrocode}
+\RequirePackage{ifthen}
+\if@Fandol
+ \LoadClass[cs4size,a4paper,UTF8,fontset=Fandol]{ctexbook}[2015/05/16]
+\else
 \LoadClass[cs4size,a4paper,UTF8]{ctexbook}[2015/05/16]
+ \setCJKmainfont[BoldFont={STZhongsong},ItalicFont={KaiTi}]{SimSun}
+ \setCJKsansfont{SimHei}
+ \setCJKmonofont{FangSong}
+ \setmainfont{Times New Roman}
+ \setsansfont{Arial}
+ \setmonofont{Courier New}
+\fi
 %    \end{macrocode}
 % 加载 \pkg{ifxetex} 用于判断编译引擎是否为xetex
 %    \begin{macrocode}
@@ -962,13 +993,14 @@
 %\end{macro}
 %
 % \changes{v0.1}{2015/12/02}{对控制参数以及相关标题进行汉化}
+% \changes{v0.1.4}{2016/4/27}{修复英文关键词名称不准确问题}
 %    \begin{macrocode}
 %<*cfg>
 %% 摘要
 \abstractname{摘要}
 \enabstractname{Abstract}
 \newcommand{\XDU@keywordsname}{关键词}
-\newcommand{\XDU@enkeywordsname}{Key Words}
+\newcommand{\XDU@enkeywordsname}{Key words}
 %% 关键词分隔符
 \def\XDU@keywords@separator{\quad }
 \def\XDU@enkeywords@separator{\quad }
@@ -1016,8 +1048,10 @@
 %    \end{macrocode}
 % 生成摘要命令
 %\begin{macro}{\make@abstract}
+% \changes{v0.1.4}{2016/4/27}{新加字体族，用于修正封面页标题英文字体非黑体以及中文摘要关键词中，英文关键词未加粗问题，感谢lanthree <https://github.com/lanthree>同学}
 %    \begin{macrocode}
-
+\newfontfamily\enheiti{SimHei} % 新加字体族，用于修正封面页标题英文字体非黑体问题，感谢lanthree <https://github.com/lanthree>同学
+\newfontfamily\timesbd{Times New Roman Bold} % 新加字体族，用于修正中文摘要关键词中，英文关键词未加粗问题，感谢lanthree <https://github.com/lanthree>同学
 \def\make@abstract{%
 \cleardoublepage%
 \pagenumbering{roman}
@@ -1028,17 +1062,17 @@
 \centerline{\heiti\chaptersize\XDU@abstractname}\vskip5pt\par%
 \vspace*{2em}
 \XDU@cabstract%
-\par\vspace*{2em}\noindent{\heiti\zihao{-4}{\XDU@keywordsname：\XDU@keywords}}%
+\par\vspace*{2em}\noindent{\heiti\zihao{-4}\timesbd{\XDU@keywordsname：\XDU@keywords}}%
 \vspace*{1em}%
 \cleardoublepage%
 \pagestyle{headings}
 \phantomsection
 %\addcontentsline{toc}{chapter}{\XDU@enabstractname}%目录中不需要
 \vspace*{2em}
-\centerline{\textbf{\chaptersize\XDU@enabstractname}}\vskip5pt\par%
+\centerline{\timesbd{\chaptersize\XDU@enabstractname}}\vskip5pt\par%
 \vspace*{2em}
 \XDU@eabstract%
-\par\vspace*{2em}\noindent{\bf\zihao{-4}
+\par\vspace*{2em}\noindent{\timesbd\zihao{-4}
     \XDU@enkeywordsname:~\XDU@enkeywords}%
 \vspace*{1em}%
 \cleardoublepage
@@ -1050,51 +1084,65 @@
 % 这里生成封面、摘要、目录；
 %\begin{macro}{\maketitle}
 % \changes{v0.1.3}{2016/02/23}{增加关键字定义，使得模板更加规范。}
+% \changes{v0.1.4}{2016/4/27}{修正封面页标题英文字体非黑体问题，感谢lanthree <https://github.com/lanthree>同学}
+% \changes{v0.1.4}{2016/4/27}{增加校徽Logo可选命令}
 %    \begin{macrocode}
 \def\maketitle{
 \begin{titlepage}
 \begin{flushright}
 \begin{tabular}{c L{2cm}}
-\textbf{\songti\zihao{-4}\XDU@classname} & \uline{~\textbf{\songti\zihao{-4}\XDU@class}\quad~}\\
+\textbf{\zihao{-4}\XDU@classname} & \uline{~\timesbd{\zihao{-4}\XDU@class}\quad~}\\
 %\cline{2-2}
-\textbf{\songti\zihao{-4}\XDU@schoolnumbername} & \uline{~\textbf{\songti\zihao{-4}\XDU@schoolnumber}\quad~}\\
+\textbf{\zihao{-4}\XDU@schoolnumbername} & \uline{~\timesbd{\zihao{-4}\XDU@schoolnumber}\quad~}\\
 %\cline{2-2}
 \end{tabular}
 \end{flushright}
-\centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
-
-\vspace*{4em}
-
-\begin{center}
-\centering\heiti{\zihao{0}\XDU@subject}
-\end{center}
-
-\vspace*{5em}
-
-\begin{center}
-\includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
-\end{center}
+\if@nologo
+  \vspace*{4cm}
+  
+  \vspace*{4em}
+  
+  \vspace*{1cm}
+  
+  \vspace*{5em}
+  
+  \vspace*{1cm}
+\else
+  \centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
+  
+  \vspace*{4em}
+  
+  \begin{center}
+  {\centering\heiti{\zihao{0}\XDU@subject}}
+  \end{center}
+  
+  \vspace*{5em}
+  
+  \begin{center}
+  \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
+  \end{center}
+\fi
 
 \vspace*{4em}
 
 \begin{center}
 \begin{tabular}{c C{6.5cm}}
-\textbf{\songti\zihao{3}\XDU@titlename} & \heiti\zihao{3}\XDU@septitleA\\
+\textbf{\zihao{3}\XDU@titlename} & {\heiti\enheiti\zihao{3}\XDU@septitleA}\\
 \cline{2-2}
  & \\
- & \heiti\zihao{3}\XDU@septitleB\\
+ & {\heiti\enheiti\zihao{3}\XDU@septitleB}\\
 \cline{2-2}
  & \\
-\textbf{\songti\zihao{3}\XDU@schoolname} & \songti{\zihao{-3}\XDU@school}\\
+\textbf{\zihao{3}\XDU@schoolname} & {\zihao{-3}\XDU@school}\\
 \cline{2-2}
  & \\
-\textbf{\songti\zihao{3}\XDU@majorname} & \songti{\zihao{-3}\XDU@major}\\
+\textbf{\zihao{3}\XDU@majorname} & {\zihao{-3}\XDU@major}\\
 \cline{2-2}
  &\\
-\textbf{\songti\zihao{3}\XDU@authorname} & \songti{\zihao{-3}\XDU@author}\\
+\textbf{\zihao{3}\XDU@authorname} & {\zihao{-3}\XDU@author}\\
 \cline{2-2}
  &\\
-\textbf{\songti\zihao{3}\XDU@supervisorname} & \songti{\zihao{-3}\XDU@supervisor}\\
+\textbf{\zihao{3}\XDU@supervisorname} & {\zihao{-3}\XDU@supervisor}\\
 \cline{2-2}
 \cline{2-2}
 \end{tabular}
@@ -1106,12 +1154,12 @@
 \cleardoublepage
 
 \begin{center}
-\songti\textbf{\zihao{1}\XDU@declarename}
+{\textbf{\zihao{1}\XDU@declarename}}
 \end{center}
 
 \vspace*{3em}
 
-\songti{\zihao{4}\XDU@declaretext}
+{\songti{\zihao{4}\XDU@declaretext}}
 
 \vspace*{8em}
 
@@ -1288,7 +1336,7 @@
 \newtheorem{conjecture}{猜想}[chapter]
 
 %% 字体项，除非是正文字体不是规定的宋体，一般以下项目不需要
-%% \setCJKmainfont[BoldFont={SimHei},ItalicFont={KaiTi}]{SimSun}
+%% \setCJKmainfont[BoldFont={STZhongsong},ItalicFont={KaiTi}]{SimSun}
 %% \setCJKsansfont{SimHei}
 %% \setCJKmonofont{FangSong}
 %% \setmainfont{Times New Roman}

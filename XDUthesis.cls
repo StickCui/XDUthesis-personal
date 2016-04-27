@@ -25,11 +25,30 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{XDUthesis}
-[2016/02/23 0.1.3 Xidian University Thesis Template]
+[2016/04/27 0.1.4 Xidian University Thesis Template]
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1.3}
+\def\version{0.1.4}
+
+\newif\if@nologo \@nologofalse %默认使用校徽Logo
+\newif\if@Fandol \@Fandolfalse %默认为Windows系统，使用华文中宋作为中易宋体的粗体，否则全部使用Fandol字体族
+
+\DeclareOption{nologo}{\@nologotrue}
+\DeclareOption{Fandol}{\@Fandoltrue}
+\ProcessOptions\relax
+
+\RequirePackage{ifthen}
+\if@Fandol
+ \LoadClass[cs4size,a4paper,UTF8,fontset=Fandol]{ctexbook}[2015/05/16]
+\else
 \LoadClass[cs4size,a4paper,UTF8]{ctexbook}[2015/05/16]
+ \setCJKmainfont[BoldFont={STZhongsong},ItalicFont={KaiTi}]{SimSun}
+ \setCJKsansfont{SimHei}
+ \setCJKmonofont{FangSong}
+ \setmainfont{Times New Roman}
+ \setsansfont{Arial}
+ \setmonofont{Courier New}
+\fi
 \RequirePackage{ifxetex}
 \RequirePackage{xcolor}
 \RequirePackage[T1]{fontenc}
@@ -200,7 +219,8 @@
 \newcommand{\XDU@@eabstract}[1]{\long\gdef\XDU@eabstract{#1}}
 \newenvironment{enabstract}{\collect@body\XDU@@eabstract}{}
 
-
+\newfontfamily\enheiti{SimHei} % 新加字体族，用于修正封面页标题英文字体非黑体问题，感谢lanthree <https://github.com/lanthree>同学
+\newfontfamily\timesbd{Times New Roman Bold} % 新加字体族，用于修正中文摘要关键词中，英文关键词未加粗问题，感谢lanthree <https://github.com/lanthree>同学
 \def\make@abstract{%
 \cleardoublepage%
 \pagenumbering{roman}
@@ -210,16 +230,16 @@
 \centerline{\heiti\chaptersize\XDU@abstractname}\vskip5pt\par%
 \vspace*{2em}
 \XDU@cabstract%
-\par\vspace*{2em}\noindent{\heiti\zihao{-4}{\XDU@keywordsname：\XDU@keywords}}%
+\par\vspace*{2em}\noindent{\heiti\zihao{-4}\timesbd{\XDU@keywordsname：\XDU@keywords}}%
 \vspace*{1em}%
 \cleardoublepage%
 \pagestyle{headings}
 \phantomsection
 \vspace*{2em}
-\centerline{\textbf{\chaptersize\XDU@enabstractname}}\vskip5pt\par%
+\centerline{\timesbd{\chaptersize\XDU@enabstractname}}\vskip5pt\par%
 \vspace*{2em}
 \XDU@eabstract%
-\par\vspace*{2em}\noindent{\bf\zihao{-4}
+\par\vspace*{2em}\noindent{\timesbd\zihao{-4}
     \XDU@enkeywordsname:~\XDU@enkeywords}%
 \vspace*{1em}%
 \cleardoublepage
@@ -228,44 +248,56 @@
 \begin{titlepage}
 \begin{flushright}
 \begin{tabular}{c L{2cm}}
-\textbf{\songti\zihao{-4}\XDU@classname} & \uline{~\textbf{\songti\zihao{-4}\XDU@class}\quad~}\\
-\textbf{\songti\zihao{-4}\XDU@schoolnumbername} & \uline{~\textbf{\songti\zihao{-4}\XDU@schoolnumber}\quad~}\\
+\textbf{\zihao{-4}\XDU@classname} & \uline{~\timesbd{\zihao{-4}\XDU@class}\quad~}\\
+\textbf{\zihao{-4}\XDU@schoolnumbername} & \uline{~\timesbd{\zihao{-4}\XDU@schoolnumber}\quad~}\\
 \end{tabular}
 \end{flushright}
-\centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
+\if@nologo
+  \vspace*{4cm}
 
-\vspace*{4em}
+  \vspace*{4em}
 
-\begin{center}
-\centering\heiti{\zihao{0}\XDU@subject}
-\end{center}
+  \vspace*{1cm}
 
-\vspace*{5em}
+  \vspace*{5em}
 
-\begin{center}
-\includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
-\end{center}
+  \vspace*{1cm}
+\else
+  \centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
+
+  \vspace*{4em}
+
+  \begin{center}
+  {\centering\heiti{\zihao{0}\XDU@subject}}
+  \end{center}
+
+  \vspace*{5em}
+
+  \begin{center}
+  \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
+  \end{center}
+\fi
 
 \vspace*{4em}
 
 \begin{center}
 \begin{tabular}{c C{6.5cm}}
-\textbf{\songti\zihao{3}\XDU@titlename} & \heiti\zihao{3}\XDU@septitleA\\
+\textbf{\zihao{3}\XDU@titlename} & {\heiti\enheiti\zihao{3}\XDU@septitleA}\\
 \cline{2-2}
  & \\
- & \heiti\zihao{3}\XDU@septitleB\\
+ & {\heiti\enheiti\zihao{3}\XDU@septitleB}\\
 \cline{2-2}
  & \\
-\textbf{\songti\zihao{3}\XDU@schoolname} & \songti{\zihao{-3}\XDU@school}\\
+\textbf{\zihao{3}\XDU@schoolname} & {\zihao{-3}\XDU@school}\\
 \cline{2-2}
  & \\
-\textbf{\songti\zihao{3}\XDU@majorname} & \songti{\zihao{-3}\XDU@major}\\
+\textbf{\zihao{3}\XDU@majorname} & {\zihao{-3}\XDU@major}\\
 \cline{2-2}
  &\\
-\textbf{\songti\zihao{3}\XDU@authorname} & \songti{\zihao{-3}\XDU@author}\\
+\textbf{\zihao{3}\XDU@authorname} & {\zihao{-3}\XDU@author}\\
 \cline{2-2}
  &\\
-\textbf{\songti\zihao{3}\XDU@supervisorname} & \songti{\zihao{-3}\XDU@supervisor}\\
+\textbf{\zihao{3}\XDU@supervisorname} & {\zihao{-3}\XDU@supervisor}\\
 \cline{2-2}
 \cline{2-2}
 \end{tabular}
@@ -277,12 +309,12 @@
 \cleardoublepage
 
 \begin{center}
-\songti\textbf{\zihao{1}\XDU@declarename}
+{\textbf{\zihao{1}\XDU@declarename}}
 \end{center}
 
 \vspace*{3em}
 
-\songti{\zihao{4}\XDU@declaretext}
+{\songti{\zihao{4}\XDU@declaretext}}
 
 \vspace*{8em}
 
