@@ -25,16 +25,18 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{XDUthesis}
-[2016/04/27 0.1.4 Xidian University Thesis Template]
+[2016/05/03 0.1.5 Xidian University Thesis Template]
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1.4}
+\def\version{0.1.5}
 
 \newif\if@nologo \@nologofalse %默认使用校徽Logo
 \newif\if@Fandol \@Fandolfalse %默认为Windows系统，使用华文中宋作为中易宋体的粗体，否则全部使用Fandol字体族
+\newif\if@WordOneHalf \@WordOneHalffalse % 默认为LaTeX下的1.5倍行距
 
 \DeclareOption{nologo}{\@nologotrue}
 \DeclareOption{Fandol}{\@Fandoltrue}
+\DeclareOption{WordOneHalf}{\@WordOneHalftrue}
 \ProcessOptions\relax
 
 \RequirePackage{ifthen}
@@ -77,10 +79,14 @@
     urlcolor=black,
     bookmarksnumbered=true
 ]{hyperref}
-\RequirePackage[a4paper,left=3cm,right=2cm,
+\RequirePackage[a4paper,left=4cm,right=2cm,
                top=3cm,bottom=2cm]{geometry}
 \RequirePackage{setspace}
-\setstretch{1.5}%设置行距1.5倍
+\if@WordOneHalf
+  \setstretch{1.62}%设置Word下的行距1.5倍
+\else
+  \setstretch{1.5}%设置行距1.5倍
+\fi
 \RequirePackage{fancyhdr}
 \setlength{\headheight}{15pt}
 \fancypagestyle{plain}{%为了章首页
@@ -252,6 +258,33 @@
 \textbf{\zihao{-4}\XDU@schoolnumbername} & \uline{~\timesbd{\zihao{-4}\XDU@schoolnumber}\quad~}\\
 \end{tabular}
 \end{flushright}
+\if@WordOneHalf
+\if@nologo
+  \vspace*{4cm}
+
+  \vspace*{2em}
+
+  \vspace*{1cm}
+
+  \vspace*{3em}
+
+  \vspace*{1cm}
+\else
+  \centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
+
+  \vspace*{2em}
+
+  \begin{center}
+  {\centering\heiti{\zihao{0}\XDU@subject}}
+  \end{center}
+
+  \vspace*{3em}
+
+  \begin{center}
+  \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
+  \end{center}
+\fi
+\else
 \if@nologo
   \vspace*{4cm}
 
@@ -276,6 +309,7 @@
   \begin{center}
   \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
   \end{center}
+\fi
 \fi
 
 \vspace*{4em}

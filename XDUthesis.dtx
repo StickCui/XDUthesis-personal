@@ -35,7 +35,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{XDUthesis.dtx}[2016/04/27 0.1.4 Xidian University Thesis Template]
+\ProvidesFile{XDUthesis.dtx}[2016/05/03 0.1.5 Xidian University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 
 \usepackage[left=4cm,right=3cm,top=3cm,bottom=2cm]{geometry}
@@ -353,7 +353,7 @@
 % 以下，给出一个使用本模板写作的样例，并在注释信息中说明每一部分的作用。
 % 
 % \begin{example}
-% \documentclass{XDUthesis} %[Fandol]%[nologo]%[Fandol,nologo]%
+% \documentclass[WordOneHalf]{XDUthesis} %[Fandol]%[nologo]%[WordOneHalf]%[Fandol,nologo]%[WordOneHalf,nologo]%[WordOneHalf,Fandol,nologo]
 % \title{基于ctex套件的模板制作过程}
 % \author{崔元顺}
 % \date{2015年12月02日}%如果是今天可以是\today或省略不写
@@ -534,6 +534,7 @@
 % \begin{itemize}
 %  \item \textbf{Fandol}：使用Fandol字库，此时无幼圆、隶书、微软雅黑字体定义命令，如需使用，请自行设置
 %  \item \textbf{nologo}：封面不使用学校的Logo
+%  \item \textbf{WordOneHalf}：设置行距为Word版的1.5倍行距
 % \end{itemize}
 % 
 % \subsubsection{控制命令}
@@ -686,23 +687,26 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{XDUthesis}
 %<cfg>\ProvidesFile{XDUthesis.cfg}
-%<cls|cfg>[2016/04/27 0.1.4 Xidian University Thesis Template]
+%<cls|cfg>[2016/05/03 0.1.5 Xidian University Thesis Template]
 %    \end{macrocode}
 % \subsection{功能类宏包相关}
 % 本部分将模板能用到的大部分宏包加载在了此处，并进行了相关参数的配置。
 % \changes{v0.1}{2015/12/02}{本模板用到的大部分宏包及相关参数配置于此处}
 % \changes{v0.1.4}{2016/4/27}{修复生成的PDF乱码问题，新添加两个可选指令}
+% \changes{v0.1.5}{2016/05/03}{添加WordOneHalf参数，可选择行间距为Word下的1.5倍行间距}
 %    \begin{macrocode}
 %<*cls>
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1.4}
+\def\version{0.1.5}
 
 \newif\if@nologo \@nologofalse %默认使用校徽Logo
 \newif\if@Fandol \@Fandolfalse %默认为Windows系统，使用华文中宋作为中易宋体的粗体，否则全部使用Fandol字体族
+\newif\if@WordOneHalf \@WordOneHalffalse % 默认为LaTeX下的1.5倍行距
 
 \DeclareOption{nologo}{\@nologotrue}
 \DeclareOption{Fandol}{\@Fandoltrue}
+\DeclareOption{WordOneHalf}{\@WordOneHalftrue}
 \ProcessOptions\relax
 
 %    \end{macrocode}
@@ -791,11 +795,16 @@
 % 按照我校工作手册，进行页面设置；
 %
 % 此部分设置纸型，页边距以及行距。 
+% \changes{v0.1.5}{2016/05/03}{修正页面边距，添加装订线距离1cm. 增加设置word下1.5倍行距判断}
 %    \begin{macrocode}
-\RequirePackage[a4paper,left=3cm,right=2cm,
+\RequirePackage[a4paper,left=4cm,right=2cm,
                top=3cm,bottom=2cm]{geometry}
 \RequirePackage{setspace}
-\setstretch{1.5}%设置行距1.5倍
+\if@WordOneHalf
+  \setstretch{1.62}%设置Word下的行距1.5倍
+\else
+  \setstretch{1.5}%设置行距1.5倍
+\fi
 %    \end{macrocode}
 %
 % 此部分设置以及定义全文不同部分用到的页眉格式。
@@ -1086,6 +1095,7 @@
 % \changes{v0.1.3}{2016/02/23}{增加关键字定义，使得模板更加规范。}
 % \changes{v0.1.4}{2016/4/27}{修正封面页标题英文字体非黑体问题，感谢lanthree <https://github.com/lanthree>同学}
 % \changes{v0.1.4}{2016/4/27}{增加校徽Logo可选命令}
+% \changes{v0.1.5}{2016/05/03}{增加word下1.5倍行距判断}
 %    \begin{macrocode}
 \def\maketitle{
 \begin{titlepage}
@@ -1097,6 +1107,33 @@
 %\cline{2-2}
 \end{tabular}
 \end{flushright}
+\if@WordOneHalf
+\if@nologo
+  \vspace*{4cm}
+  
+  \vspace*{2em}
+  
+  \vspace*{1cm}
+  
+  \vspace*{3em}
+  
+  \vspace*{1cm}
+\else
+  \centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
+  
+  \vspace*{2em}
+  
+  \begin{center}
+  {\centering\heiti{\zihao{0}\XDU@subject}}
+  \end{center}
+  
+  \vspace*{3em}
+  
+  \begin{center}
+  \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
+  \end{center}
+\fi
+\else
 \if@nologo
   \vspace*{4cm}
   
@@ -1121,6 +1158,7 @@
   \begin{center}
   \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
   \end{center}
+\fi
 \fi
 
 \vspace*{4em}
