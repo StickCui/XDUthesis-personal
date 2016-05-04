@@ -2,13 +2,13 @@ template:
 	latex XDUthesis.ins
 
 xelatex:
-	xelatex -synctex=1 -interaction=nonstopmode Main
-	bibtex Main
-	xelatex -synctex=1 -interaction=nonstopmode Main
-	xelatex -synctex=1 -interaction=nonstopmode Main
+	xelatex -synctex=1 -interaction=nonstopmode Demo
+	bibtex Demo
+	xelatex -synctex=1 -interaction=nonstopmode Demo
+	xelatex -synctex=1 -interaction=nonstopmode Demo
 
 latexmk:
-	latexmk -xelatex Main
+	latexmk -xelatex Demo
 
 manual:
 	xelatex XDUthesis.dtx
