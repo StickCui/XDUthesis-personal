@@ -1,1 +1,1 @@
-latexmk -xelatex Demo
+latexmk -xelatex -interaction=nonstopmode Demo

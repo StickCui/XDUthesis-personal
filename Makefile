@@ -8,7 +8,7 @@ xelatex:
 	xelatex -synctex=1 -interaction=nonstopmode Demo
 
 latexmk:
-	latexmk -xelatex Demo
+	latexmk -xelatex -interaction=nonstopmode Demo
 
 manual:
 	xelatex XDUthesis.dtx
