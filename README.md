@@ -96,21 +96,35 @@ $ make clean
 
 ## 模板文件介绍
 
-	XDUthesis.dtx - 模板文档类与说明文档混排文件
-	XDUthesis.ins - 模板驱动文件
-	XDUthesis.cls - 模板文档类
-	XDUthesis.cfg - 模板配置文件
-	XDUbib.bst - 参考文献样式
-	Main.tex - 模板示例文档主文件
-	XDUthesis.pdf - 模板用户手册
-    
-    MakeManual.bat - 生成用户手册的脚本
-	MakeByXeLaTeX.bat - 使用XeLaTeX 生成实例
-	MakeByLaTeXMk.bat - 使用LaTeXMk生成例子 
-    MakeTemplate.bat - 生成模板的脚本
-	Clean.bat 模板中间文件清除脚本
-    Makefile - Linxu/Mac用的Makefile
-	Code/ 源代码存放文件夹
-	Figure/ 图片存放文件夹
-	ThesisFiles/ 模板章节、参考文献、附录等文件夹
-注：文件夹内容不再介绍。
+### 模板文件
+
++ XDUthesis.dtx - 模板文档类与说明文档混排文件
++ XDUthesis.ins - 模板驱动文件
++ XDUthesis.cls - 模板文档类
++ XDUthesis.cfg - 模板配置文件
++ XDUthesis.pdf - 用户手册
++ XDUbib.bst - 参考文献样式
+
+### 示例文件
+
++ Code/ 源代码存放文件夹
++ Figure/ 图片存放文件夹
++ ThesisFiles/ 模板章节、参考文献、附录等文件夹
++ Demo.tex - 模板示例文档主文件
+
+> 注：文件夹内容不再介绍。
+
+### 编译脚本
+
+#### For Windows
+
++ MakeManual.bat - 生成用户手册的脚本
++ MakeByXeLaTeX.bat - 使用XeLaTeX 生成实例
++ MakeByLaTeXMk.bat - 使用LaTeXMk生成例子 
++ MakeTemplate.bat - 生成模板的脚本
++ Clean.bat 模板中间文件清除脚本
+
+#### For Linux/Mac
+
++ Makefile - Linxu/Mac用的Makefile
+
