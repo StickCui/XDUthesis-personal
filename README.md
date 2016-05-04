@@ -62,19 +62,19 @@ Xidian University thesis template
 
 ### Linux/Mac用户
 
-1. 生成模板
+#### 生成模板
 
 ```bash
 $ make template
 ```
 
-2. 生成用户说明手册
+#### 生成用户说明手册
 
 ```bash
 $ make manual
 ```
 
-3. 生成例子
+#### 生成示例
 
 使用`XeLaTeX`:
 
@@ -88,7 +88,7 @@ $ make xelatex
 $ make latexmk
 ```
 
-4. 清理文件夹
+#### 清理文件夹
 
 ```bash
 $ make clean
