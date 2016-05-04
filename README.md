@@ -50,25 +50,54 @@ Xidian University thesis template
 
 ## 使用方法
 
-为方便 Windows 用户，专门写好了两种编译脚本；还有示例可供学习使用。
+### Windows用户
 
-使用前，请仔细阅读 XDUthesis.pdf 模板用户手册。
+> 为方便 Windows 用户，专门写好了两种编译脚本；还有示例可供学习使用。
 
-里面的**生成模板.bat**是根据**XDUthesis.dtx**和**XDUthesis.ins**生成模板文档类**XDUthesis.cls**和模板配置文件**XDUthesis.cfg**的；由于本人已经为小白用户生成好了，下载后无需再运行了。
+**使用前，请仔细阅读 XDUthesis.pdf 模板用户手册！**
 
-里面的**MakeXDUthesisPDF.bat**根据**XDUthesis.dtx**来生成用户说明文档的，由于本人已经为小白用户生成好了，下载后无需再运行了。
+**MakeTemplate.bat**是根据**XDUthesis.dtx**和**XDUthesis.ins**生成模板文档类**XDUthesis.cls**和模板配置文件**XDUthesis.cfg**的；由于本人已经为小白用户生成好了，下载后无需再运行了。
+
+**MakeManual.bat**根据**XDUthesis.dtx**来生成用户说明文档的，由于本人已经为小白用户生成好了，下载后无需再运行了。
+
+### Linux/Mac用户
+
+1. 生成模板
+
+```bash
+$ make template
+```
+
+2. 生成用户说明手册
+
+```bash
+$ make manual
+```
+
+3. 清理文件夹
+
+```bash
+$ make clean
+```
+
+4. 其他用法请参看Makefile
 
 ## 模板文件介绍
-	XDUthesis.dtx 模板文档类与说明文档混排文件
-	XDUthesis.ins 模板驱动文件
-	XDUthesis.cls 模板文档类
-	XDUthesis.cfg 模板配置文件
-	XDUbib.bst 参考文献样式
-	Main.tex 模板示例文档主文件
-	XDUthesis.pdf 模板用户手册
-	xelatex 编译.bat 模板的 XeLaTeX 编译脚本
-	latexmk 编译.bat 模板的 latexmk 编译脚本
-	clean.bat 模板中间文件清除脚本
+
+	XDUthesis.dtx - 模板文档类与说明文档混排文件
+	XDUthesis.ins - 模板驱动文件
+	XDUthesis.cls - 模板文档类
+	XDUthesis.cfg - 模板配置文件
+	XDUbib.bst - 参考文献样式
+	Main.tex - 模板示例文档主文件
+	XDUthesis.pdf - 模板用户手册
+    
+    MakeManual.bat - 生成用户手册的脚本
+	MakeByXeLaTeX.bat - 模板的 XeLaTeX 编译脚本
+	MakeByLaTeXMk.bat - 模板的 LaTeXMk 编译脚本
+    MakeTemplate.bat - 生成模板的脚本
+	Clean.bat 模板中间文件清除脚本
+    Makefile - Linxu/Mac用的Makefile
 	Code/ 源代码存放文件夹
 	Figure/ 图片存放文件夹
 	ThesisFiles/ 模板章节、参考文献、附录等文件夹
