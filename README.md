@@ -74,13 +74,25 @@ $ make template
 $ make manual
 ```
 
-3. 清理文件夹
+3. 生成例子
+
+使用`XeLaTeX`:
+
+```bash
+$ make xelatex
+```
+
+使用`LaTeXMk`:
+
+```bash
+$ make latexmk
+```
+
+4. 清理文件夹
 
 ```bash
 $ make clean
 ```
-
-4. 其他用法请参看Makefile
 
 ## 模板文件介绍
 
@@ -93,8 +105,8 @@ $ make clean
 	XDUthesis.pdf - 模板用户手册
     
     MakeManual.bat - 生成用户手册的脚本
-	MakeByXeLaTeX.bat - 模板的 XeLaTeX 编译脚本
-	MakeByLaTeXMk.bat - 模板的 LaTeXMk 编译脚本
+	MakeByXeLaTeX.bat - 使用XeLaTeX 生成实例
+	MakeByLaTeXMk.bat - 使用LaTeXMk生成例子 
     MakeTemplate.bat - 生成模板的脚本
 	Clean.bat 模板中间文件清除脚本
     Makefile - Linxu/Mac用的Makefile
