@@ -163,8 +163,7 @@
 \renewcommand\thempfootnote{\ding{\numexpr171+\value{mpfootnote}}}
 \ctexset{
  chapter/beforeskip = {20pt},
- chapter/titleformat = {\zihao{3}\heiti\centering},%
- chapter/nameformat = {\zihao{3}\heiti\centering},
+ chapter/format = {\zihao{3}\heiti\centering}%修正章节标题错误加粗问题
  section/format = {\zihao{4}\songti\centering},
  subsection/format = {\zihao{-4}\songti}
 }
