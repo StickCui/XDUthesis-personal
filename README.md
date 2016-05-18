@@ -7,6 +7,28 @@ Xidian University thesis template
 - 修正章节标题错误加粗问题 By [XDXX](https://github.com/XDXX) 同学。
 - 修该原来图表编号后冒号为大空格，符合工作手册的样例。感谢 [git4xuan](https://github.com/git4xuan) 同学。
 - 其他若干问题修复。
+
+## 注：本版本更新对章标题进行了重新设置。所需 `ctex` 宏集为2016/02/02 v2.3版本。希望大家使用 `TeX Live Manager` 进行更新。
+
+解释下：老版本的 `ctex` 宏集（v2.0.2）中章设置（chapter）中的format参数不起作用，因而之前的设置分开来设置的，如下：
+
+	\ctexset{
+	 %…………%
+	 chapter/titleformat = {\zihao{3}\heiti\centering},%
+	 chapter/nameformat = {\zihao{3}\heiti\centering},
+	 %…………%
+	}
+
+然而，在新版本的 `ctex` 宏集（2016/02/02 v2.3版本）中，上面的设置会引发一些小错误，对章标题误加粗；但是format参数起作用了，且能正常工作，因此对新版本的 `ctex` 宏集进行了修复：
+
+	\ctexset{
+	 %…………%
+	 chapter/format = {\zihao{3}\heiti\centering},
+	 %…………%
+	}
+
+这样又引发了老版本的不支持（前面提到的format不起作用）；综上，对于懂得LaTeX的熟练用户，大家如不想升级，可以再改回原来的设置。对于新手，建议更新 `ctex` 宏集。（众口难调，好累啊。又不是我的锅（委屈脸 ( T﹏T )））
+
 ### 关于参考文献使用的解释
 [git4xuan](https://github.com/git4xuan) 同学在 issues 里面提到了一些关于参考文献的疑问，个人觉得很有意义。但是有些没有在工作手册中找到相关规定。不敢直接进行修改。特在此说明一下。
 
