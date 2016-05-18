@@ -2,6 +2,26 @@
 ---
 Xidian University thesis template
 ---
+## v0.1.6 版本更新，详情如下：
+- 修正目录中章的索引符为空问题，修正为点。感谢 [git4xuan](https://github.com/git4xuan) 同学。
+- 修正章节标题错误加粗问题 By [XDXX](https://github.com/XDXX) 同学。
+- 修该原来图表编号后冒号为大空格，符合工作手册的样例。感谢 [git4xuan](https://github.com/git4xuan) 同学。
+- 其他若干问题修复。
+### 关于参考文献使用的解释
+[git4xuan](https://github.com/git4xuan) 同学在 issues 里面提到了一些关于参考文献的疑问，个人觉得很有意义。但是有些没有在工作手册中找到相关规定。不敢直接进行修改。特在此说明一下。
+
+对于参考文献样式，本模板提供了XDUbib.bst样式，以及对应不排序的样式。个人以为基本符合工作手册要求。如有同学觉得有问题，可以参考齐飞老师的模板使用IEEEtran的参考文献样式。使用方法，将Demo.tex文件里的
+
+	\bibliographystyle{XDUbibunsrt}
+
+代码修改为
+
+	\bibliographystyle{IEEEtran}
+
+即可。
+### 关于封面以及诚信说明书
+模板里自动生成的封面以及诚信声明书不具有权威价值，暂时仅供展示，大家以学校教务处官方提供的表格为准。下载地址：[http://sjjx.xidian.edu.cn/down/html/?26.html](http://sjjx.xidian.edu.cn/down/html/?26.html)
+
 ## v0.1.5 版本更新，详情如下：
 
 - 首先，添加页面边距的装订线距离（之前忽略了，汗-_-||）

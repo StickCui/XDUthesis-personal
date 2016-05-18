@@ -25,10 +25,10 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{XDUthesis}
-[2016/05/03 0.1.5 Xidian University Thesis Template]
+[2016/05/18 0.1.6 Xidian University Thesis Template]
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1.5}
+\def\version{0.1.6}
 
 \newif\if@nologo \@nologofalse %默认使用校徽Logo
 \newif\if@Fandol \@Fandolfalse %默认为Windows系统，使用华文中宋作为中易宋体的粗体，否则全部使用Fandol字体族
@@ -42,6 +42,7 @@
 \RequirePackage{ifthen}
 \if@Fandol
  \LoadClass[cs4size,a4paper,UTF8,fontset=Fandol]{ctexbook}[2015/05/16]
+ \setmainfont{Times New Roman}
 \else
 \LoadClass[cs4size,a4paper,UTF8]{ctexbook}[2015/05/16]
  \setCJKmainfont[BoldFont={STZhongsong},ItalicFont={KaiTi}]{SimSun}
@@ -63,6 +64,7 @@
 \RequirePackage{CJKfntef}
 \RequirePackage{longtable,multirow,hhline,tabularx,array,
                 makecell,diagbox,colortbl,booktabs}
+\RequirePackage[labelsep=quad]{caption}[2011/11/10]
 \RequirePackage[labelformat=simple,skip=10pt]{subcaption}
 \newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
 \newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
@@ -163,11 +165,15 @@
 \renewcommand\thempfootnote{\ding{\numexpr171+\value{mpfootnote}}}
 \ctexset{
  chapter/beforeskip = {20pt},
- chapter/titleformat = {\zihao{3}\heiti\centering},%
- chapter/nameformat = {\zihao{3}\heiti\centering},
+ chapter/format = {\zihao{3}\heiti\centering},%修正章节标题错误加粗问题
  section/format = {\zihao{4}\songti\centering},
  subsection/format = {\zihao{-4}\songti}
 }
+\RequirePackage{titletoc}
+\titlecontents{chapter}[0pt]{\bfseries}%
+{\thecontentslabel}%
+    {\hspace*{0pt}}%
+{\titlerule*[10bp]{\timesbd{.}}\timesbd{\contentspage}}
 
 \renewcommand\theequation{\ifnum \c@chapter>\z@
   \thechapter-\fi\@arabic\c@equation}
@@ -352,9 +358,9 @@
 
 \vspace*{8em}
 
-{\songti\zihao{4}\XDU@authornametitle\CJKunderline{\phantom{\qquad\qquad\qquad\qquad}}\XDU@signedname\quad\XDU@timename\@date
+{\songti\zihao{4}\XDU@authornametitle\CJKunderline{\phantom{\qquad\qquad\qquad\quad}}\XDU@signedname\quad\XDU@timename\@date
 
-\XDU@supervisorhasread\CJKunderline{\phantom{\qquad\qquad\qquad}}\XDU@signedname\quad\XDU@timename\@date}
+\XDU@supervisorhasread\CJKunderline{\phantom{\qquad\qquad\quad}}\XDU@signedname\quad\XDU@timename\@date}
 
 \make@abstract%
 

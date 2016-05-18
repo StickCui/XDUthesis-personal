@@ -35,7 +35,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{XDUthesis.dtx}[2016/05/03 0.1.5 Xidian University Thesis Template]
+\ProvidesFile{XDUthesis.dtx}[2016/05/18 0.1.6 Xidian University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 
 \usepackage[left=4cm,right=3cm,top=3cm,bottom=2cm]{geometry}
@@ -687,7 +687,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{XDUthesis}
 %<cfg>\ProvidesFile{XDUthesis.cfg}
-%<cls|cfg>[2016/05/03 0.1.5 Xidian University Thesis Template]
+%<cls|cfg>[2016/05/18 0.1.6 Xidian University Thesis Template]
 %    \end{macrocode}
 % \subsection{功能类宏包相关}
 % 本部分将模板能用到的大部分宏包加载在了此处，并进行了相关参数的配置。
@@ -698,7 +698,7 @@
 %<*cls>
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1.5}
+\def\version{0.1.6}
 
 \newif\if@nologo \@nologofalse %默认使用校徽Logo
 \newif\if@Fandol \@Fandolfalse %默认为Windows系统，使用华文中宋作为中易宋体的粗体，否则全部使用Fandol字体族
@@ -716,6 +716,7 @@
 \RequirePackage{ifthen}
 \if@Fandol
  \LoadClass[cs4size,a4paper,UTF8,fontset=Fandol]{ctexbook}[2015/05/16]
+ \setmainfont{Times New Roman}
 \else
 \LoadClass[cs4size,a4paper,UTF8]{ctexbook}[2015/05/16]
  \setCJKmainfont[BoldFont={STZhongsong},ItalicFont={KaiTi}]{SimSun}
@@ -767,9 +768,11 @@
 \RequirePackage{CJKfntef}
 %    \end{macrocode}
 % 表格相关的宏包（含设置）以及图表标题、子图表相关宏包
+% \changes{v0.1.6}{2016/05/18}{修该原来图表编号后冒号为大空格，符合工作手册的样例。感谢 \href{https://github.com/git4xuan}{git4xuan} 同学。}
 %    \begin{macrocode}
 \RequirePackage{longtable,multirow,hhline,tabularx,array,
                 makecell,diagbox,colortbl,booktabs}
+\RequirePackage[labelsep=quad]{caption}[2011/11/10]
 \RequirePackage[labelformat=simple,skip=10pt]{subcaption}
 \newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
 \newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
@@ -897,14 +900,20 @@
 %
 % 标题编号项设置，包括：章节标题、公式编号、图标标题
 % \changes{v0.1.3}{2016/02/23}{修复参考文献字体为五号字体，增加非角标参考文献命令}
+% \changes{v0.1.6}{2016/05/17}{修正章节标题错误加粗问题 By \href{https://github.com/XDXX}{XDXX}}
+% \changes{v0.1.6}{2016/05/18}{修正目录中章的索引符为空问题，修正为点。感谢 \href{https://github.com/git4xuan}{git4xuan} 同学。}
 %    \begin{macrocode}
 \ctexset{
  chapter/beforeskip = {20pt},
- chapter/titleformat = {\zihao{3}\heiti\centering},%
- chapter/nameformat = {\zihao{3}\heiti\centering},
+ chapter/format = {\zihao{3}\heiti\centering},%修正章节标题错误加粗问题
  section/format = {\zihao{4}\songti\centering},
  subsection/format = {\zihao{-4}\songti}
 }
+\RequirePackage{titletoc}
+\titlecontents{chapter}[0pt]{\bfseries}%
+	{\thecontentslabel}%
+    {\hspace*{0pt}}%
+	{\titlerule*[10bp]{\timesbd{.}}\timesbd{\contentspage}}
 
 \renewcommand\theequation{\ifnum \c@chapter>\z@
   \thechapter-\fi\@arabic\c@equation}
@@ -1057,7 +1066,7 @@
 %    \end{macrocode}
 % 生成摘要命令
 %\begin{macro}{\make@abstract}
-% \changes{v0.1.4}{2016/4/27}{新加字体族，用于修正封面页标题英文字体非黑体以及中文摘要关键词中，英文关键词未加粗问题，感谢lanthree <https://github.com/lanthree>同学}
+% \changes{v0.1.4}{2016/4/27}{新加字体族，用于修正封面页标题英文字体非黑体以及中文摘要关键词中，英文关键词未加粗问题，感谢 \href{https://github.com/lanthree}{lanthree} 同学}
 %    \begin{macrocode}
 \newfontfamily\enheiti{SimHei} % 新加字体族，用于修正封面页标题英文字体非黑体问题，感谢lanthree <https://github.com/lanthree>同学
 \newfontfamily\timesbd{Times New Roman Bold} % 新加字体族，用于修正中文摘要关键词中，英文关键词未加粗问题，感谢lanthree <https://github.com/lanthree>同学
@@ -1201,9 +1210,9 @@
 
 \vspace*{8em}
 
-{\songti\zihao{4}\XDU@authornametitle\CJKunderline{\phantom{\qquad\qquad\qquad\qquad}}\XDU@signedname\quad\XDU@timename\@date
+{\songti\zihao{4}\XDU@authornametitle\CJKunderline{\phantom{\qquad\qquad\qquad\quad}}\XDU@signedname\quad\XDU@timename\@date
 
-\XDU@supervisorhasread\CJKunderline{\phantom{\qquad\qquad\qquad}}\XDU@signedname\quad\XDU@timename\@date}
+\XDU@supervisorhasread\CJKunderline{\phantom{\qquad\qquad\quad}}\XDU@signedname\quad\XDU@timename\@date}
 
 \make@abstract%
 
