@@ -35,7 +35,7 @@
 %
 % \iffalse
 %<*driver>
-\ProvidesFile{XDUthesis.dtx}[2016/05/18 0.1.6 Xidian University Thesis Template]
+\ProvidesFile{XDUthesis.dtx}[2016/05/23 0.1.7 Xidian University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 
 \usepackage[left=4cm,right=3cm,top=3cm,bottom=2cm]{geometry}
@@ -687,7 +687,7 @@
 %<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
 %<cls>\ProvidesClass{XDUthesis}
 %<cfg>\ProvidesFile{XDUthesis.cfg}
-%<cls|cfg>[2016/05/18 0.1.6 Xidian University Thesis Template]
+%<cls|cfg>[2016/05/23 0.1.7 Xidian University Thesis Template]
 %    \end{macrocode}
 % \subsection{功能类宏包相关}
 % 本部分将模板能用到的大部分宏包加载在了此处，并进行了相关参数的配置。
@@ -698,7 +698,7 @@
 %<*cls>
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1.6}
+\def\version{0.1.7}
 
 \newif\if@nologo \@nologofalse %默认使用校徽Logo
 \newif\if@Fandol \@Fandolfalse %默认为Windows系统，使用华文中宋作为中易宋体的粗体，否则全部使用Fandol字体族
@@ -712,11 +712,14 @@
 %    \end{macrocode}
 % 加载 \pkg{ifthen} 用于判断传入参数。确定加载文档类型
 % \changes{v0.1.4}{2016/4/27}{非Windows系统需要修改为Fandol字体族}
+% \changes{v0.1.7}{2016/05/23}{中文Fandol字体族下，添加英文字体设置，防止默认字体不符合要求}
 %    \begin{macrocode}
 \RequirePackage{ifthen}
 \if@Fandol
  \LoadClass[cs4size,a4paper,UTF8,fontset=Fandol]{ctexbook}[2015/05/16]
  \setmainfont{Times New Roman}
+ \setsansfont{Arial}
+ \setmonofont{Courier New}
 \else
 \LoadClass[cs4size,a4paper,UTF8]{ctexbook}[2015/05/16]
  \setCJKmainfont[BoldFont={STZhongsong},ItalicFont={KaiTi}]{SimSun}
@@ -735,10 +738,7 @@
 %    \begin{macrocode}
 \RequirePackage{xcolor}
 %    \end{macrocode}
-% 纠正部分西文字符问题
-%    \begin{macrocode}
-\RequirePackage[T1]{fontenc}
-%    \end{macrocode}
+% \changes{v0.1.7}{2016/05/23}{删除fontenc宏包，使得正文英文字体相关设置生效}
 % 数学公式宏包
 %    \begin{macrocode}
 \RequirePackage{amsmath,amssymb}

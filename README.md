@@ -2,33 +2,19 @@
 ---
 Xidian University thesis template
 ---
+## v0.1.7 版本更新，详情如下：
+- 中文 Fandol 字体族下，添加英文字体设置，防止默认字体不符合要求
+- 删除 fontenc 宏包，使得正文英文字体相关设置生效
+
+题外话，今天咨询了 [Fandol](https://github.com/clerkma/fandol-fonts) 字体的开发者[马起园](https://github.com/clerkma)老师，Fandol宋体里缺少一些字，如“瞭”字；因此，作为 TeXLive2015 自带的中文字体族，考虑多平台兼容，仅供备用，大家尽量使用自己系统里稳定的正式中文字体族。
+
+Windows 系统本模板已经默认给出；Mac OS 在不装新字体的情况下，推荐使用华文字体族；Linux 系统在不装新字体的情况下，可以参考ctex宏集Linux系统的字体设置方法，在XDUthesis.cfg中进行设置。
+
 ## v0.1.6 版本更新，详情如下：
 - 修正目录中章的索引符为空问题，修正为点。感谢 [git4xuan](https://github.com/git4xuan) 同学。
 - 修正章节标题错误加粗问题 By [XDXX](https://github.com/XDXX) 同学。
 - 修该原来图表编号后冒号为大空格，符合工作手册的样例。感谢 [git4xuan](https://github.com/git4xuan) 同学。
 - 其他若干问题修复。
-
-## 注：本版本更新对章标题进行了重新设置。所需 `ctex` 宏集为2016/02/02 v2.3版本。希望大家使用 `TeX Live Manager` 进行更新。
-
-解释下：老版本的 `ctex` 宏集（v2.0.2）中章设置（chapter）中的format参数不起作用，因而之前的设置分开来设置的，如下：
-
-	\ctexset{
-	 %…………%
-	 chapter/titleformat = {\zihao{3}\heiti\centering},%
-	 chapter/nameformat = {\zihao{3}\heiti\centering},
-	 %…………%
-	}
-
-然而，在新版本的 `ctex` 宏集（2016/02/02 v2.3版本）中，上面的设置会引发一些小错误，对章标题误加粗；但是format参数起作用了，且能正常工作，因此对新版本的 `ctex` 宏集进行了修复：
-
-	\ctexset{
-	 %…………%
-	 chapter/format = {\zihao{3}\heiti\centering},
-	 %…………%
-	}
-
-这样又引发了老版本的不支持（前面提到的format不起作用）；综上，对于懂得LaTeX的熟练用户，大家如不想升级，可以再改回原来的设置。对于新手，建议更新 `ctex` 宏集。（众口难调，好累啊。又不是我的锅（委屈脸 ( T﹏T )））
-
 ### 关于参考文献使用的解释
 [git4xuan](https://github.com/git4xuan) 同学在 issues 里面提到了一些关于参考文献的疑问，个人觉得很有意义。但是有些没有在工作手册中找到相关规定。不敢直接进行修改。特在此说明一下。
 

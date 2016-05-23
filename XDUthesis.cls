@@ -25,10 +25,10 @@
 %% 
 \NeedsTeXFormat{LaTeX2e}[1999/12/01]
 \ProvidesClass{XDUthesis}
-[2016/05/18 0.1.6 Xidian University Thesis Template]
+[2016/05/23 0.1.7 Xidian University Thesis Template]
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1.6}
+\def\version{0.1.7}
 
 \newif\if@nologo \@nologofalse %默认使用校徽Logo
 \newif\if@Fandol \@Fandolfalse %默认为Windows系统，使用华文中宋作为中易宋体的粗体，否则全部使用Fandol字体族
@@ -43,6 +43,8 @@
 \if@Fandol
  \LoadClass[cs4size,a4paper,UTF8,fontset=Fandol]{ctexbook}[2015/05/16]
  \setmainfont{Times New Roman}
+ \setsansfont{Arial}
+ \setmonofont{Courier New}
 \else
 \LoadClass[cs4size,a4paper,UTF8]{ctexbook}[2015/05/16]
  \setCJKmainfont[BoldFont={STZhongsong},ItalicFont={KaiTi}]{SimSun}
@@ -54,7 +56,6 @@
 \fi
 \RequirePackage{ifxetex}
 \RequirePackage{xcolor}
-\RequirePackage[T1]{fontenc}
 \RequirePackage{amsmath,amssymb}
 \RequirePackage{graphicx}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
