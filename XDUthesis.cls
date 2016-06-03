@@ -60,6 +60,7 @@
 \RequirePackage{graphicx}
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 \RequirePackage[numbers,super,square,sort&compress]{natbib}
+\setlength{\bibsep}{0.2ex}%默认设置参考文献条目间距过宽，先设置为0.2ex调窄些。
 \RequirePackage[toc,page,title,titletoc,header]{appendix}
 \RequirePackage{listings}
 \RequirePackage{CJKfntef}

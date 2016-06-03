@@ -185,8 +185,9 @@
 % XDUthesis.ins & 模板驱动文件\\
 % XDUthesis.cls & 模板文档类文件\\
 % XDUthesis.cfg & 模板配置文件\\
-% Main.tex & 模板示例拆分文档的主文档\footnote{将整个论文拆分为几个部分，汇总在本文件}\\
-% XDUbib.bst & 参考文献样式文件\\
+% Demo.tex & 模板示例拆分文档的主文档\footnote{将整个论文拆分为几个部分，汇总在本文件}\\
+% XDUbib.bst & 参考文献样式文件（排序）\\
+% XDUbibunsrt.bst & 参考文献样式文件（不排序）\\
 % ThesisFiles/ & 模板示例拆分文档的存储目录\\
 % Abstract.tex & 模板示例拆分文档的摘要部分（存放于ThesisFiles）\\
 % Chapters.tex & 模板示例拆分文档的主要章节部分（存放于ThesisFiles）\footnote{可根据需要再行修改或拆分，添加到Main.tex中；}\\
@@ -195,18 +196,18 @@
 % RefFile.bib & 参考文献库示例文档（存放于ThesisFiles）\\
 % Code/ & 源代码文件夹，存放各种程序源代码（附录用）\\
 % Figure/ & 图片文件夹，存放各种文章中用到的图\footnote{\textbf{\color{red}目录里面的logo.pdf和xidian.pdf勿动，模板封面要用！！！}}\\
-% xelatex 编译.bat & 使用\XeLaTeX{} 编译模板Windows脚本\\
-% latexmk 编译.bat & 使用 \verb=latexmk + xelatex= 命令编译模板的脚本\\
+% MakeDemoByXeLaTeX.bat & 使用\XeLaTeX{} 编译模板Windows脚本\\
+% MakeDemoByLaTeXMk.bat & 使用 \verb=latexmk + xelatex= 命令编译模板的脚本\\
 % 生成模板.bat & 生成模板文档类与配置文件脚本\\
-% MakeXDUthesisPDF.bat & 生成用户手册脚本\\
-% clean.bat & 编译过程中间文件清理Windows脚本\\
+% MakeManual.bat & 生成用户手册脚本\\
+% Clean.bat & 编译过程中间文件清理Windows脚本\\
 % \textbf{XDUthesis.pdf} & 用户手册（本文档）\\
 % \end{longtable}
 % \textbf{注：}使用前，请仔细阅读\textbf{XDUthesis.pdf}，即本文档。
 % 
 % \subsection{使用前的准备}
 % 
-% \XDUthesis{} 模板基于ctex中文套件中的ctexbook (v2.0.2 2015/05/16)而写，因此用户需要确保安装了此版本（或更新）的ctex套件，如没有安装可前往\textbf{CTAN: \url{http://www.ctan.org}} 或者前往\textbf{GitHub(CTeX-org): \url{https://github.com/CTeX-org/ctex-kit/releases}} 下载。
+% \XDUthesis{} 模板基于ctex中文套件中的ctexbook (2016/02/02 v2.3)而写，因此用户需要确保安装了此版本（或更新）的ctex套件，如没有安装可前往\textbf{CTAN: \url{http://www.ctan.org}} 或者前往\textbf{GitHub(CTeX-org): \url{https://github.com/CTeX-org/ctex-kit/releases}} 下载。
 % 
 % 除以上，本模板还依赖以下宏包：
 % 
@@ -275,10 +276,10 @@
 % \item \textbf{命令行}
 % 
 % \begin{shell}
-% pdflatex Template
-% bibtex Template
-% pdflatex Template
-% pdflatex Template
+% pdflatex Demo
+% bibtex Demo
+% pdflatex Demo
+% pdflatex Demo
 % \end{shell}
 % 
 % \item \textbf{编辑器}
@@ -300,10 +301,10 @@
 % \item \textbf{命令行}
 % 
 % \begin{shell}
-% xelatex Template
-% bibtex Template
-% xelatex Template
-% xelatex Template
+% xelatex Demo
+% bibtex Demo
+% xelatex Demo
+% xelatex Demo
 % \end{shell}
 % 
 % \item \textbf{编辑器}
@@ -325,7 +326,7 @@
 % 下面是\textbf{latexmk} 命令结合\textbf{xelatex} 命令编译的示例：
 % 
 % \begin{shell}
-% latexmk -xelatex Template
+% latexmk -xelatex Demo
 % \end{shell}
 % 
 % 此处，就不说编辑器里的了，不同的编辑器需要不同的配置。
@@ -353,7 +354,7 @@
 % 以下，给出一个使用本模板写作的样例，并在注释信息中说明每一部分的作用。
 % 
 % \begin{example}
-% \documentclass[WordOneHalf]{XDUthesis} %[Fandol]%[nologo]%[WordOneHalf]%[Fandol,nologo]%[WordOneHalf,nologo]%[WordOneHalf,Fandol,nologo]
+% \documentclass[WordOneHalf]{XDUthesis}
 % \title{基于ctex套件的模板制作过程}
 % \author{崔元顺}
 % \date{2015年12月02日}%如果是今天可以是\today或省略不写
@@ -752,8 +753,10 @@
 \RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
 %    \end{macrocode}
 % 参考文献引用功能宏包
+% \changes{v0.1.7}{2016/05/23}{调整参考文献条目间距为0.2ex}
 %    \begin{macrocode}
 \RequirePackage[numbers,super,square,sort&compress]{natbib}
+\setlength{\bibsep}{0.2ex}%默认设置参考文献条目间距过宽，先设置为0.2ex调窄些。
 %    \end{macrocode}
 % 附录相关宏包
 %    \begin{macrocode}
