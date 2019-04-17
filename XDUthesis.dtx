@@ -1,6 +1,8 @@
 % \iffalse meta-comment
+% !TeX program  = xelatex
+% !TeX encoding = UTF-8
 % 
-% Copyright (C) 2015 by Stick Cui <Stick_Cui@163.com>
+% Copyright (C) 2015--2019 by Stick Cui <Stick_Cui@163.com>
 % 
 % This file may be distributed and/or modified under the
 % conditions of the LaTeX Project Public License, either version 1.3c
@@ -11,31 +13,92 @@
 %
 % and version 1.3c or later is part of all distributions of LaTeX
 % version 2008/05/04 or later.
-%
-% $Id$
-%
-% \fi
-%
-% \CheckSum{0}
-% \CharacterTable
-%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
-%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
-%   Digits        \0\1\2\3\4\5\6\7\8\9
-%   Exclamation   \!     Double quote  \"     Hash (number) \#
-%   Dollar        \$     Percent       \%     Ampersand     \&
-%   Acute accent  \'     Left paren    \(     Right paren   \)
-%   Asterisk      \*     Plus          \+     Comma         \,
-%   Minus         \-     Point         \.     Solidus       \/
-%   Colon         \:     Semicolon     \;     Less than     \<
-%   Equals        \=     Greater than  \>     Question mark \?
-%   Commercial at \@     Left bracket  \[     Backslash     \\
-%   Right bracket \]     Circumflex    \^     Underscore    \_
-%   Grave accent  \`     Left brace    \{     Vertical bar  \|
-%   Right brace   \}     Tilde         \~}
-%
-% \iffalse
+
+%<*internal>
+\def\nameofplainTeX{plain}
+\ifx\fmtname\nameofplainTeX\else
+  \expandafter\begingroup
+\fi
+%</internal>
+%<*install>
+
+\input docstrip
+\keepsilent
+\askforoverwritefalse
+\preamble
+
+This is a generated file.
+
+Copyright (C) 2015--\the\year by Stick Cui <Stick_Cui@163.com>
+
+This file may be distributed and/or modified under the
+conditions of the LaTeX Project Public License, either version 1.3c
+of this license or (at your option) any later version.
+The latest version of this license is in:
+
+http://www.latex-project.org/lppl.txt
+
+and version 1.3c or later is part of all distributions of LaTeX
+version 2008/05/04 or later.
+
+To produce the documentation run the original source files ending with `.dtx'
+through LaTeX.
+
+\endpreamble
+\postamble
+
+This package consists of the file  XDUthesis.dtx,
+             and the derived files XDUthesis.cls,
+                                   XDUthesis.cfg.        
+
+\endpostamble
+
+\usedir{tex/latex/XDUthesis}
+\generate
+  {
+    \file{XDUthesis.cls}{\from{\jobname.dtx}{cls}}
+    \file{XDUthesis.cfg}{\from{\jobname.dtx}{cfg}}
+  }
+
+\Msg{***********************************************************}
+\Msg{*}
+\Msg{* To finish the installation you have to move the following}
+\Msg{* files into a directory searched by TeX:}
+\Msg{*}
+\Msg{* The recommended directory is TEXMF/tex/latex/XDUstyle}
+\Msg{*}
+\Msg{* \space\space XDUthesis.cls}
+\Msg{* \space\space XDUthesis.cfg}
+\Msg{*}
+\Msg{* To produce the documentation run the files ending with}
+\Msg{* `.dtx' through LaTeX.}
+\Msg{*}
+\Msg{* Happy TeXing!}
+\Msg{***********************************************************}
+
+%</install>
+%<install>\endbatchfile
+%<*internal>
+
+\usedir{tex/latex/XDUthesis}
+\generate
+  {
+    \file{\jobname.ins}{\from{\jobname.dtx}{install}}
+  }
+\nopreamble\nopostamble
+
+\ifx\fmtname\nameofplainTeX
+  \expandafter\endbatchfile
+\else
+  \expandafter\endgroup
+\fi
+%</internal>}
+%<cls>\NeedsTeXFormat{LaTeX2e}
+%<cls>\ProvidesClass{XDUthesis}
+%<cfg>\ProvidesFile{XDUthesis.cfg}
+%<cls|cfg>[2019/04/17 0.1.8 Xidian University Thesis Template]
 %<*driver>
-\ProvidesFile{XDUthesis.dtx}[2016/05/23 0.1.7 Xidian University Thesis Template]
+\ProvidesFile{XDUthesis.dtx}[2019/04/17 0.1.8 Xidian University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 
 \usepackage[left=4cm,right=3cm,top=3cm,bottom=2cm]{geometry}
@@ -45,7 +108,7 @@
 \usepackage[toc,page,title,titletoc,header]{appendix}
 \usepackage{longtable,multirow,hhline,tabularx,array,makecell,booktabs,diagbox}
 \usepackage{metalogo,xcolor}
-\usepackage{pst-barcode}%二维码
+\usepackage{pst-barcode}%
 \usepackage{fancyvrb,CJKfntef}
 \usepackage[bookmarks=true,%
     linkcolor=black,%
@@ -53,10 +116,8 @@
     unicode=true,%
     colorlinks=true,%
     pdfborder=001,%
-    linkcolor=black,%
-    citecolor=black,%
     urlcolor=black,
-    bookmarksnumbered=true%标签显示章节编号
+    bookmarksnumbered=true%
 ]{hyperref}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
 
@@ -100,6 +161,8 @@
 
 \begin{document}
   \DocInput{\jobname.dtx}
+  \PrintChanges
+  \PrintIndex
 \end{document}
 %</driver>
 % \fi
@@ -181,13 +244,12 @@
 % \hline
 % \endlastfoot
 % 
-% XDUthesis.dtx & 模板文档类与说明文档混排文件\\
-% XDUthesis.ins & 模板驱动文件\\
-% XDUthesis.cls & 模板文档类文件\\
-% XDUthesis.cfg & 模板配置文件\\
+% XDUthesis.dtx & 模板主文件\\
+% XDUthesis.cls & 模板文档类文件（需生成）\\
+% XDUthesis.cfg & 模板配置文件（需生成）\\
 % Demo.tex & 模板示例拆分文档的主文档\footnote{将整个论文拆分为几个部分，汇总在本文件}\\
-% XDUbib.bst & 参考文献样式文件（排序）\\
-% XDUbibunsrt.bst & 参考文献样式文件（不排序）\\
+% gbt7714-plain.bst & 参考文献样式文件（排序）\\
+% gbt7714-unsrt.bst & 参考文献样式文件（不排序）\\
 % ThesisFiles/ & 模板示例拆分文档的存储目录\\
 % Abstract.tex & 模板示例拆分文档的摘要部分（存放于ThesisFiles）\\
 % Chapters.tex & 模板示例拆分文档的主要章节部分（存放于ThesisFiles）\footnote{可根据需要再行修改或拆分，添加到Main.tex中；}\\
@@ -196,12 +258,8 @@
 % RefFile.bib & 参考文献库示例文档（存放于ThesisFiles）\\
 % Code/ & 源代码文件夹，存放各种程序源代码（附录用）\\
 % Figure/ & 图片文件夹，存放各种文章中用到的图\footnote{\textbf{\color{red}目录里面的logo.pdf和xidian.pdf勿动，模板封面要用！！！}}\\
-% MakeDemoByXeLaTeX.bat & 使用\XeLaTeX{} 编译模板Windows脚本\\
-% MakeDemoByLaTeXMk.bat & 使用 \verb=latexmk + xelatex= 命令编译模板的脚本\\
-% 生成模板.bat & 生成模板文档类与配置文件脚本\\
-% MakeManual.bat & 生成用户手册脚本\\
-% Clean.bat & 编译过程中间文件清理Windows脚本\\
-% \textbf{XDUthesis.pdf} & 用户手册（本文档）\\
+% make.bat & 生成模板类、说明文档等Windows脚本\\
+% \textbf{XDUthesis.pdf} & 用户手册（本文档，需生成）\\
 % \end{longtable}
 % \textbf{注：}使用前，请仔细阅读\textbf{XDUthesis.pdf}，即本文档。
 % 
@@ -681,59 +739,131 @@
 % \appendix
 % \StopEventually{\PrintChanges\PrintIndex}
 % \clearpage
-%
-% \section{代码实现}
-% \subsection{基本信息}
-%    \begin{macrocode}
-%<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
-%<cls>\ProvidesClass{XDUthesis}
-%<cfg>\ProvidesFile{XDUthesis.cfg}
-%<cls|cfg>[2016/05/23 0.1.7 Xidian University Thesis Template]
-%    \end{macrocode}
+% \section{源代码}
 % \subsection{功能类宏包相关}
 % 本部分将模板能用到的大部分宏包加载在了此处，并进行了相关参数的配置。
 % \changes{v0.1}{2015/12/02}{本模板用到的大部分宏包及相关参数配置于此处}
 % \changes{v0.1.4}{2016/4/27}{修复生成的PDF乱码问题，新添加两个可选指令}
 % \changes{v0.1.5}{2016/05/03}{添加WordOneHalf参数，可选择行间距为Word下的1.5倍行间距}
+% \changes{v0.1.8}{2019/04/16}{修正字体设置}
 %    \begin{macrocode}
 %<*cls>
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1.7}
-
+\def\version{0.1.8}
+\LoadClass[a4paper,UTF8,zihao=-4]{ctexbook}
+% LaTeX3 programming environment
+\RequirePackage{expl3}% LaTeX3 programming environment
+\ExplSyntaxOn%
+\providecommand{\g__ctex_fontset_tl}{}% platform fontset state variable
+\edef\XDU@ctexfontset{\g__ctex_fontset_tl}% expanded platform fontset state variable
+\ExplSyntaxOff%
+% For theis logo
 \newif\if@nologo \@nologofalse %默认使用校徽Logo
-\newif\if@Fandol \@Fandolfalse %默认为Windows系统，使用华文中宋作为中易宋体的粗体，否则全部使用Fandol字体族
-\newif\if@WordOneHalf \@WordOneHalffalse % 默认为LaTeX下的1.5倍行距
-
 \DeclareOption{nologo}{\@nologotrue}
-\DeclareOption{Fandol}{\@Fandoltrue}
-\DeclareOption{WordOneHalf}{\@WordOneHalftrue}
-\ProcessOptions\relax
+%
+\newif\ifXDU@windowsn \XDU@windowsnfalse % 正常windows字体，XeLaTeX下可能会乱码
+\newif\ifXDU@windowsf \XDU@windowsffalse % 修正的windows字体，XeLaTeX下不能会乱码
+\newif\ifXDU@mac \XDU@macfalse
+\newif\ifXDU@adobe \XDU@adobefalse
+\newif\ifXDU@times \XDU@timesfalse
+%
+\DeclareOption{windowsn}{\XDU@windowsntrue\XDU@timestrue}%
+\DeclareOption{windowsf}{\XDU@windowsftrue\XDU@timestrue}%
+\DeclareOption{mac}{\XDU@mactrue\XDU@timestrue}%
+\DeclareOption{adobe}{\XDU@adobetrue\XDU@timestrue}%
 
+\newif\ifXDU@ctex@windows \XDU@ctex@windowsfalse
+\newif\ifXDU@ctex@mac \XDU@ctex@macfalse
+\newif\ifXDU@ctex@adobe \XDU@ctex@adobefalse
+
+\newif\if@WordOneHalf \@WordOneHalffalse % 默认为LaTeX下的1.5倍行距
+\DeclareOption{WordOneHalf}{\@WordOneHalftrue}
+\newif\ifXDU@contentsnd \XDU@contentsndfalse
+\DeclareOption{contentsnd}{\XDU@contentsndtrue}
+\DeclareOption*{%
+    \PassOptionsToClass{\CurrentOption}{ctexbook}%
+}
+\ProcessOptions\relax%
+%    \end{macrocode}
+% 加载 \pkg{ifxetex,ifluatex} 用于判断编译引擎是否为xetex或luatex
+%    \begin{macrocode}
+\newif\ifXDU@pdftex \XDU@pdftexfalse
+\newif\ifXDU@luatex \XDU@luatexfalse
+\newif\ifXDU@xetex \XDU@xetexfalse
+\RequirePackage{ifxetex,ifluatex}% LaTeX engine detection
+\ifxetex%
+    \XDU@xetextrue
+\else\ifluatex%
+    \XDU@luatextrue
+\else%
+    \XDU@pdftextrue
+\fi\fi%
+%    \end{macrocode}
+% 若用户无字体设置要求，则获取ctexbook根据系统自动设置参数
+%    \begin{macrocode}
+\RequirePackage{etoolbox}% a toolbox of programming facilities
+\newcommand{\xduifstreq}{\expandafter\ifstrequal\expandafter}% 
+\xduifstreq{\XDU@ctexfontset}{windows}{\XDU@ctex@windowstrue\XDU@timestrue}{%
+\xduifstreq{\XDU@ctexfontset}{mac}{\XDU@ctex@mactrue\XDU@timestrue}{%
+\xduifstreq{\XDU@ctexfontset}{adobe}{\XDU@ctex@adobetrue\XDU@timestrue}{%
+\XDU@timesfalse}}}
 %    \end{macrocode}
 % 加载 \pkg{ifthen} 用于判断传入参数。确定加载文档类型
 % \changes{v0.1.4}{2016/4/27}{非Windows系统需要修改为Fandol字体族}
 % \changes{v0.1.7}{2016/05/23}{中文Fandol字体族下，添加英文字体设置，防止默认字体不符合要求}
+% \changes{v0.1.8}{2019/04/16}{修正字体设置，去除Fandol字体族}
 %    \begin{macrocode}
 \RequirePackage{ifthen}
-\if@Fandol
- \LoadClass[cs4size,a4paper,UTF8,fontset=Fandol]{ctexbook}[2015/05/16]
- \setmainfont{Times New Roman}
- \setsansfont{Arial}
- \setmonofont{Courier New}
-\else
-\LoadClass[cs4size,a4paper,UTF8]{ctexbook}[2015/05/16]
- \setCJKmainfont[BoldFont={STZhongsong},ItalicFont={KaiTi}]{SimSun}
- \setCJKsansfont{SimHei}
- \setCJKmonofont{FangSong}
- \setmainfont{Times New Roman}
- \setsansfont{Arial}
- \setmonofont{Courier New}
+\ifXDU@pdftex
+    \RequirePackage[utf8]{inputenc}% set input encoding, document must use utf-8 encoding
+    \RequirePackage[T1]{fontenc}% set font encoding to enable modern font encoding
+    %- Call font package options:
+    %- Text + Math: Times Roman
+    \RequirePackage{newtxtext}%
+    \RequirePackage[cmintegrals]{newtxmath}% load after math packages
+\else% XeTeX or LuaTeX
+  \ifXDU@windowsn%
+    \setCJKmainfont[AutoFakeBold,ItalicFont=KaiTi]{SimSun}%
+    \setCJKsansfont[AutoFakeBold]{SimHei}%
+    \setCJKmonofont{FangSong}%
+  \else\ifXDU@windowsf
+    \setCJKmainfont[BoldFont={STZhongsong},ItalicFont={KaiTi}]{SimSun}%
+    \setCJKsansfont[AutoFakeBold]{SimHei}%
+    \setCJKmonofont{FangSong}%
+    % \setmonofont{Courier New}
+  \else\ifXDU@mac
+    \setCJKmainfont[ItalicFont=Kaiti SC,BoldItalicFont=Kaiti SC Bold]{Songti SC Light}%
+    \setCJKsansfont{Heiti SC}%
+    \setCJKmonofont{STFangsong}%
+  \else\ifXDU@adobe
+    \setCJKmainfont[AutoFakeBold,ItalicFont=AdobeKaitiStd-Regular]{AdobeSongStd-Light}%
+    \setCJKsansfont[AutoFakeBold]{AdobeHeitiStd-Regular}%
+    \setCJKmonofont{AdobeFangsongStd-Regular}%
+  \else
+    \ifXDU@ctex@windows
+      \setCJKmainfont[AutoFakeBold,ItalicFont=KaiTi]{SimSun}%
+      \setCJKsansfont[AutoFakeBold]{SimHei}%
+      \setCJKmonofont{FangSong}%
+    \else\ifXDU@ctex@mac
+      \setCJKmainfont[ItalicFont=Kaiti SC,BoldItalicFont=Kaiti SC Bold]{Songti SC Light}%
+      \setCJKsansfont{Heiti SC}%
+      \setCJKmonofont{STFangsong}%
+    \else\ifXDU@ctex@adobe
+      \setCJKmainfont[AutoFakeBold,ItalicFont=AdobeKaitiStd-Regular]{AdobeSongStd-Light}%
+      \setCJKsansfont[AutoFakeBold]{AdobeHeitiStd-Regular}%
+      \setCJKmonofont{AdobeFangsongStd-Regular}%
+    \fi\fi\fi
+  \fi\fi\fi\fi
+  \ifXDU@times
+    \setmainfont[NFSSFamily=entextrm]{Times New Roman}%
+    \setsansfont[NFSSFamily=entextsf]{Times New Roman}%
+  \else
+    \setmainfont[NFSSFamily=entextrm]{FreeSerif}%
+    \setsansfont[NFSSFamily=entextsf]{FreeSerif}%
+  \fi
+%
 \fi
-%    \end{macrocode}
-% 加载 \pkg{ifxetex} 用于判断编译引擎是否为xetex
-%    \begin{macrocode}
-\RequirePackage{ifxetex}
 %    \end{macrocode}
 % 色彩宏包
 %    \begin{macrocode}
@@ -790,8 +920,6 @@
     unicode=true,
     colorlinks=true,
     pdfborder=001,
-    linkcolor=black,
-    citecolor=black,
     urlcolor=black,
     bookmarksnumbered=true
 ]{hyperref}
@@ -905,6 +1033,7 @@
 % \changes{v0.1.3}{2016/02/23}{修复参考文献字体为五号字体，增加非角标参考文献命令}
 % \changes{v0.1.6}{2016/05/17}{修正章节标题错误加粗问题 By \href{https://github.com/XDXX}{XDXX}}
 % \changes{v0.1.6}{2016/05/18}{修正目录中章的索引符为空问题，修正为点。感谢 \href{https://github.com/git4xuan}{git4xuan} 同学。}
+% \changes{v0.1.8}{2019/04/17}{根据一位15级的学弟/学妹的提问，添加新的目录样式，新样式去除了标题与页码之间的点连接}
 %    \begin{macrocode}
 \ctexset{
  chapter/beforeskip = {20pt},
@@ -913,10 +1042,39 @@
  subsection/format = {\zihao{-4}\songti}
 }
 \RequirePackage{titletoc}
-\titlecontents{chapter}[0pt]{\bfseries}%
-	{\thecontentslabel}%
-    {\hspace*{0pt}}%
-	{\titlerule*[10bp]{\timesbd{.}}\timesbd{\contentspage}}
+\ifXDU@contentsnd
+  \ifXDU@pdftex
+    \titlecontents{chapter}[0em]{\zihao{-4}\songti\bfseries}%
+    {\thecontentslabel}%
+        {}%
+    {\textbf{\contentspage}}
+  \else
+    \titlecontents{chapter}[0em]{\zihao{-4}\bfseries}%
+    {\thecontentslabel}%
+        {}%
+    {\textbf{\contentspage}}
+  \fi
+  \titlecontents{section}[2em]{\zihao{-4}}%
+  {\contentslabel{2em}}%
+      {}%
+  {\textit{\contentspage}}
+  \titlecontents{subsection}[3em]{\zihao{-4}}%
+  {\contentslabel{3em}}%
+      {}%
+  {\textit{\contentspage}}
+\else
+  \ifXDU@pdftex
+    \titlecontents{chapter}[0em]{\songti\bfseries}%
+    	{\thecontentslabel}%
+        {\hspace*{0em}}%
+    	{\titlerule*[10bp]{\textbf{.}}\textbf{\contentspage}}
+  \else
+    \titlecontents{chapter}[0em]{\bfseries}%
+    {\thecontentslabel}%
+      {\hspace*{0em}}%
+    {\titlerule*[10bp]{\textbf{.}}\textbf{\contentspage}}
+  \fi
+\fi
 
 \renewcommand\theequation{\ifnum \c@chapter>\z@
   \thechapter-\fi\@arabic\c@equation}
@@ -1070,9 +1228,14 @@
 % 生成摘要命令
 %\begin{macro}{\make@abstract}
 % \changes{v0.1.4}{2016/4/27}{新加字体族，用于修正封面页标题英文字体非黑体以及中文摘要关键词中，英文关键词未加粗问题，感谢 \href{https://github.com/lanthree}{lanthree} 同学}
+% \changes{v0.1.8}{2019/4/17}{Times New Roman 正文粗体不正确问题已解决；兼容PDFLaTeX，但貌似不起作用}
 %    \begin{macrocode}
+\ifXDU@pdftex
+\newcommand{\enheiti}{\fontfamily{SimHei}\selectfont}
+\else
 \newfontfamily\enheiti{SimHei} % 新加字体族，用于修正封面页标题英文字体非黑体问题，感谢lanthree <https://github.com/lanthree>同学
-\newfontfamily\timesbd{Times New Roman Bold} % 新加字体族，用于修正中文摘要关键词中，英文关键词未加粗问题，感谢lanthree <https://github.com/lanthree>同学
+\fi
+% \newfontfamily\timesbd{Times New Roman Bold} % 新加字体族，用于修正中文摘要关键词中，英文关键词未加粗问题，感谢lanthree <https://github.com/lanthree>同学
 \def\make@abstract{%
 \cleardoublepage%
 \pagenumbering{roman}
@@ -1083,18 +1246,18 @@
 \centerline{\heiti\chaptersize\XDU@abstractname}\vskip5pt\par%
 \vspace*{2em}
 \XDU@cabstract%
-\par\vspace*{2em}\noindent{\heiti\zihao{-4}\timesbd{\XDU@keywordsname：\XDU@keywords}}%
+\par\vspace*{2em}\noindent{\heiti\zihao{-4}\textbf{\XDU@keywordsname：\XDU@keywords}}%
 \vspace*{1em}%
 \cleardoublepage%
 \pagestyle{headings}
 \phantomsection
 %\addcontentsline{toc}{chapter}{\XDU@enabstractname}%目录中不需要
 \vspace*{2em}
-\centerline{\timesbd{\chaptersize\XDU@enabstractname}}\vskip5pt\par%
+\centerline{\textbf{\chaptersize\XDU@enabstractname}}\vskip5pt\par%
 \vspace*{2em}
 \XDU@eabstract%
-\par\vspace*{2em}\noindent{\timesbd\zihao{-4}
-    \XDU@enkeywordsname:~\XDU@enkeywords}%
+\par\vspace*{2em}\noindent{\textbf{\zihao{-4}
+    \XDU@enkeywordsname:~\XDU@enkeywords}}%
 \vspace*{1em}%
 \cleardoublepage
 }
@@ -1108,38 +1271,31 @@
 % \changes{v0.1.4}{2016/4/27}{修正封面页标题英文字体非黑体问题，感谢lanthree <https://github.com/lanthree>同学}
 % \changes{v0.1.4}{2016/4/27}{增加校徽Logo可选命令}
 % \changes{v0.1.5}{2016/05/03}{增加word下1.5倍行距判断}
+% \changes{v0.1.8}{2019/04/17}{重新修正封面}
 %    \begin{macrocode}
 \def\maketitle{
 \begin{titlepage}
 \begin{flushright}
-\begin{tabular}{c L{2cm}}
-\textbf{\zihao{-4}\XDU@classname} & \uline{~\timesbd{\zihao{-4}\XDU@class}\quad~}\\
+\begin{tabular}{c L{2.5cm}}
+\textbf{\zihao{-4}\XDU@classname} & \uline{~\textbf{\zihao{-4}\XDU@class}\quad~}\\
 %\cline{2-2}
-\textbf{\zihao{-4}\XDU@schoolnumbername} & \uline{~\timesbd{\zihao{-4}\XDU@schoolnumber}\quad~}\\
+\textbf{\zihao{-4}\XDU@schoolnumbername} & \uline{~\textbf{\zihao{-4}\XDU@schoolnumber}\quad~}\\
 %\cline{2-2}
 \end{tabular}
 \end{flushright}
 \if@WordOneHalf
 \if@nologo
-  \vspace*{4cm}
-  
-  \vspace*{2em}
-  
-  \vspace*{1cm}
-  
-  \vspace*{3em}
-  
-  \vspace*{1cm}
+  \vspace*{\stretch{11}}
 \else
   \centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
   
-  \vspace*{2em}
+  \vspace*{\stretch{2}}
   
   \begin{center}
   {\centering\heiti{\zihao{0}\XDU@subject}}
   \end{center}
   
-  \vspace*{3em}
+  \vspace*{\stretch{3}}
   
   \begin{center}
   \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
@@ -1147,25 +1303,17 @@
 \fi
 \else
 \if@nologo
-  \vspace*{4cm}
-  
-  \vspace*{4em}
-  
-  \vspace*{1cm}
-  
-  \vspace*{5em}
-  
-  \vspace*{1cm}
+  \vspace*{\stretch{15}}
 \else
   \centering\includegraphics[width=0.5\textwidth]{./Figure/xidian.pdf}
   
-  \vspace*{4em}
+  \vspace*{\stretch{4}}
   
   \begin{center}
   {\centering\heiti{\zihao{0}\XDU@subject}}
   \end{center}
   
-  \vspace*{5em}
+  \vspace*{\stretch{5}}
   
   \begin{center}
   \includegraphics[width=0.25\textwidth]{./Figure/logo.pdf}
@@ -1173,7 +1321,7 @@
 \fi
 \fi
 
-\vspace*{4em}
+\vspace*{\stretch{4}}
 
 \begin{center}
 \begin{tabular}{c C{6.5cm}}
@@ -1213,9 +1361,11 @@
 
 \vspace*{8em}
 
-{\songti\zihao{4}\XDU@authornametitle\CJKunderline{\phantom{\qquad\qquad\qquad\quad}}\XDU@signedname\quad\XDU@timename\@date
+{\songti\zihao{4}\XDU@authornametitle\CJKunderline{\phantom{\qquad\qquad\qquad\quad}}%
+\XDU@signedname\quad\XDU@timename\@date
 
-\XDU@supervisorhasread\CJKunderline{\phantom{\qquad\qquad\quad}}\XDU@signedname\quad\XDU@timename\@date}
+\XDU@supervisorhasread\CJKunderline{\phantom{\qquad\qquad\quad}}%
+\XDU@signedname\quad\XDU@timename\@date}
 
 \make@abstract%
 
@@ -1364,6 +1514,7 @@
 %    \end{macrocode}
 %
 % \changes{v0.1}{2015/12/02}{其他配置}
+% \changes{v0.1.8}{2019/04/17}{修改备用字体设置}
 %    \begin{macrocode}
 %<*cfg>
 %% 定理类声明：来自清华大学LaTeX模板
@@ -1387,11 +1538,10 @@
 
 %% 字体项，除非是正文字体不是规定的宋体，一般以下项目不需要
 %% \setCJKmainfont[BoldFont={STZhongsong},ItalicFont={KaiTi}]{SimSun}
-%% \setCJKsansfont{SimHei}
+%% \setCJKsansfont[AutoFakeBold]{SimHei}
 %% \setCJKmonofont{FangSong}
-%% \setmainfont{Times New Roman}
-%% \setsansfont{Arial}
-%% \setmonofont{Courier New}
+%% \setmainfont[NFSSFamily=entextrm]{Times New Roman}%
+%% \setsansfont[NFSSFamily=entextsf]{Times New Roman}%
 %% 
 %% 以下项目均为ctex默认设置，如无特殊需要，无须修改
 %% \ctexset{

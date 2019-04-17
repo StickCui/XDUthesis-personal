@@ -1,4 +1,16 @@
-\documentclass[WordOneHalf]{XDUthesis} %[Fandol]%[nologo]%[WordOneHalf]%[Fandol,nologo]%[WordOneHalf,nologo]%[WordOneHalf,Fandol,nologo]
+%!TEX program = xelatex
+\documentclass[WordOneHalf]{XDUthesis}
+% 参数设置：
+%     功能设置：
+%         <nologo>: 封面页去除logo（默认有logo）
+%         <WordOneHalf>: Word 1.5 倍行距（近似）（默认关闭）
+%         <contentsnd>: 目录去除点的连接
+%     以下为字体设置，仅在XeLaTeX和LuaLaTeX下有效；不设置由系统自动检测【Windows:windowsn, mac:mac】
+%         <windowsn>: 由工作手册指定的字体设置，xelatex 下复制会乱码（不影响打印）
+%         <windowsf>: 宋体的粗体版本由华文中宋替代，PDF复制不会有乱码；粗体黑体会有乱码
+%         <adobe>: 采用对应的Adobe宋体和黑体作为中易宋体和黑体的替代；PDF复制无乱码
+%         <mac>: Mac系统下的字体
+% 
 
 \title{基于XDUthesis模板的论文写作样例}
 \author{崔元顺}
@@ -6,8 +18,8 @@
 %题目拆分：用于封面
 \septitleA{基于\XDUthesis{} 模板的}%如果论文题目长度<=11中文字符只需填此项即可B项空着
 \septitleB{论文写作样例}%如果论文题目长度>11中文字符, 建议拆分为10+x or 11+x 将剩余x个字符填在此处。
-\class{0712**}%班级号
-\schoolnumber{0712****}%学号
+\class{\phantom{22}1507070\quad}%班级号
+\schoolnumber{1507070****}%学号
 \major{统计学}%专业
 \school{数学与统计学院}%学院
 \supervisor{崔元顺}%指导老师
@@ -40,7 +52,7 @@
 %参考文献
 \phantomsection%生成该页的链接
 \addcontentsline{toc}{chapter}{\bibname}
-\bibliographystyle{XDUbibunsrt}%不对参考文献排序% XDUbib%对参考文献排序 
+\bibliographystyle{gbt7714-unsrt}%不对参考文献排序% gbt7714-plain%对参考文献排序 
 \bibliography{ThesisFiles/RefFile}%在正文中必须引用，才能显示对应的参考文献
 
 % 附录部分

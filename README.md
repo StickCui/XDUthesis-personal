@@ -2,6 +2,16 @@
 ---
 Xidian University thesis template
 ---
+## v0.1.8 版本更新，详情如下：
+- 重新兼容了PDFLaTeX，可能有些地方会不太理想（目前问题是标题西文字体无法设置为黑体，以及正文西文字体非 Times New Roman 只是很像而已）
+- 去除了Fandol字体的默认支持，改由系统自行判断决定
+- 新增了 windowsn, windowsf, adobe, mac 等字体参数，可以手动选择字体参数说明见 Demo.tex 开头部分
+- 有个别学弟/学妹反应学生手册目录样式修改了，新增了 contentsnd 参数，去除了目录中标题与页码间的点
+- 参考文献样式更新为 [gpt7714](https://github.com/CTeX-org/gbt7714-bibtex-style) 样式，删除了我本人写的 XDUbib
+- 重新修正了封面，对于班级号和学号的长度重新进行了设置。此外有些同学想要班级号居中这里采用了\phantom{}占位符命令。
+- 修正了黑体不能加粗问题。
+- 最后还是要推荐使用 XeLaTeX 编译
+
 ## v0.1.7 版本更新，详情如下：
 - 中文 Fandol 字体族下，添加英文字体设置，防止默认字体不符合要求
 - 删除 fontenc 宏包，使得正文英文字体相关设置生效
