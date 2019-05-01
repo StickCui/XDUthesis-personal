@@ -39,7 +39,8 @@ Windows 系统本模板已经默认给出；Mac OS 在不装新字体的情况�
 
 即可。
 ### 关于封面以及诚信说明书
-模板里自动生成的封面以及诚信声明书不具有权威价值，暂时仅供展示，大家以学校教务处官方提供的表格为准。下载地址：[http://sjjx.xidian.edu.cn/down/html/?26.html](http://sjjx.xidian.edu.cn/down/html/?26.html)
+模板里自动生成的封面以及诚信声明书不具有权威价值，暂时仅供展示，大家以学校教务处官方提供的表格为准。下载地址：
+教务处封面模板下载地址[http://sjjx.xidian.edu.cn/down/html/?10.html](http://sjjx.xidian.edu.cn/down/html/?10.html)
 
 ## 注：本版本更新对章标题进行了重新设置。所需 `ctex` 宏集为2016/02/02 v2.3版本。希望大家使用 `TeX Live Manager` 进行更新。
 
