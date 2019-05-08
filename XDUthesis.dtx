@@ -167,7 +167,7 @@ This package consists of the file  XDUthesis.dtx,
 %</driver>
 % \fi
 %
-% \CheckSum{966}
+% \CheckSum{977}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -796,6 +796,8 @@ This package consists of the file  XDUthesis.dtx,
 
 \newif\if@WordOneHalf \@WordOneHalffalse % 默认为LaTeX下的1.5倍行距
 \DeclareOption{WordOneHalf}{\@WordOneHalftrue}
+\newif\if@print \@printfalse %% 打印样式
+\DeclareOption{print}{\@printtrue}
 \newif\ifXDU@contentsnd \XDU@contentsndfalse
 \DeclareOption{contentsnd}{\XDU@contentsndtrue}
 \DeclareOption*{%
@@ -948,8 +950,13 @@ This package consists of the file  XDUthesis.dtx,
 % 此部分设置纸型，页边距以及行距。 
 % \changes{v0.1.5}{2016/05/03}{修正页面边距，添加装订线距离1cm. 增加设置word下1.5倍行距判断}
 %    \begin{macrocode}
-\RequirePackage[a4paper,left=4cm,right=2cm,
-               top=3cm,bottom=2cm]{geometry}
+
+\if@print
+    \RequirePackage[a4paper,left=4cm,right=2cm,top=3cm,bottom=2cm]{geometry}
+\else
+    \RequirePackage[a4paper,left=3cm,right=3cm,top=3cm,bottom=2cm]{geometry}
+\fi
+
 \RequirePackage{setspace}
 \if@WordOneHalf
   \setstretch{1.62}%设置Word下的行距1.5倍
@@ -1292,14 +1299,15 @@ This package consists of the file  XDUthesis.dtx,
 %    \begin{macrocode}
 \def\maketitle{
 \begin{titlepage}
-\begin{flushright}
-\begin{tabular}{c L{2.5cm}}
-\textbf{\zihao{-4}\XDU@classname} & \uline{~\textbf{\zihao{-4}\XDU@class}\quad~}\\
-%\cline{2-2}
-\textbf{\zihao{-4}\XDU@schoolnumbername} & \uline{~\textbf{\zihao{-4}\XDU@schoolnumber}\quad~}\\
-%\cline{2-2}
-\end{tabular}
-\end{flushright}
+%%  封面右上角班级学号格式
+\begin{table}
+  \raggedleft
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{c c}
+    \textbf{\zihao{-4}\XDU@classname} & \uline{~\textbf{\zihao{-4}\XDU@class}~}\\
+    \textbf{\zihao{-4}\XDU@schoolnumbername} & \uline{~\textbf{\zihao{-4}{\XDU@schoolnumber}}~}\\
+  \end{tabular}
+\end{table}
 \if@WordOneHalf
 \if@nologo
   \vspace*{\stretch{11}}
@@ -1552,6 +1560,9 @@ This package consists of the file  XDUthesis.dtx,
 \newtheorem{remark}{注释}[chapter]
 \newtheorem{problem}{问题}[chapter]
 \newtheorem{conjecture}{猜想}[chapter]
+\newtheorem{convention}{惯例}[chapter]
+\newtheorem{property}{性质}[chapter]
+\newtheorem{transformation}{变换}[chapter]
 
 %% 字体项，除非是正文字体不是规定的宋体，一般以下项目不需要
 %% \setCJKmainfont[BoldFont={STZhongsong},ItalicFont={KaiTi}]{SimSun}
