@@ -1,10 +1,11 @@
 %!TEX program = xelatex
-\documentclass[WordOneHalf]{XDUthesis}
+\documentclass[WordOneHalf,print]{XDUthesis}   %%启用默认字体设置，word 1.5 倍行距，打印样式
 % 参数设置：
 %     功能设置：
 %         <nologo>: 封面页去除logo（默认有logo）
 %         <WordOneHalf>: Word 1.5 倍行距（近似）（默认关闭）
 %         <contentsnd>: 目录去除点的连接
+%         <print>:  打印样式，保留装订线，默认为预览样式
 %     以下为字体设置，仅在XeLaTeX和LuaLaTeX下有效；不设置由系统自动检测【Windows:windowsn, mac:mac】
 %         <windowsn>: 由工作手册指定的字体设置，xelatex 下复制会乱码（不影响打印）
 %         <windowsf>: 宋体的粗体版本由华文中宋替代，PDF复制不会有乱码；粗体黑体会有乱码
