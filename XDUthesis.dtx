@@ -167,7 +167,7 @@ This package consists of the file  XDUthesis.dtx,
 %</driver>
 % \fi
 %
-% \CheckSum{977}
+% \CheckSum{981}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -980,7 +980,7 @@ This package consists of the file  XDUthesis.dtx,
 
 \fancypagestyle{myheadings}{%为了摘要
 \fancyhf{}
-\fancyhead[C]{\zihao{5}\songti\XDU@abstractname}
+\fancyhead[C]{\zihao{5}\songti\XDU@abstractnameheader}
 \renewcommand{\headrulewidth}{0.75pt}
 \renewcommand{\footrulewidth}{0pt}}
 \fancypagestyle{headings}{%为了abstract
@@ -1200,7 +1200,7 @@ This package consists of the file  XDUthesis.dtx,
 %    \begin{macrocode}
 %<*cfg>
 %% 摘要
-\abstractname{摘要}
+\abstractname{摘\quad 要}
 \enabstractname{Abstract}
 \newcommand{\XDU@keywordsname}{关键词}
 \newcommand{\XDU@enkeywordsname}{Key words}
@@ -1407,6 +1407,7 @@ This package consists of the file  XDUthesis.dtx,
 %<*cfg>
 %% 以下内容勿动
 \subject{本科毕业设计论文}
+\newcommand{\XDU@abstractnameheader}{摘要}
 \newcommand{\XDU@classname}{班\quad 级}
 \newcommand{\XDU@schoolnumbername}{学\quad 号}
 \newcommand{\XDU@titlename}{题\qquad 目}
@@ -1572,8 +1573,8 @@ This package consists of the file  XDUthesis.dtx,
 %% \setsansfont[NFSSFamily=entextsf]{Times New Roman}%
 %% 
 %% 以下项目均为ctex默认设置，如无特殊需要，无须修改
-%% \ctexset{
-%%  contentsname = {目录},
+ \ctexset{
+  contentsname = {目\quad 录},
 %%  listfigurename = {插图},%插图目录
 %%  listtablename = {表格},%表格目录
 %%  figurename = {图},
@@ -1581,7 +1582,7 @@ This package consists of the file  XDUthesis.dtx,
 %%  indexname = {索引},
 %%  appendixname = {附录},
 %%  bibname = {参考文献}
-%% }
+ }
 %</cfg>
 %    \end{macrocode}
 %
