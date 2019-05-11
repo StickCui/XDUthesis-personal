@@ -96,9 +96,9 @@ This package consists of the file  XDUthesis.dtx,
 %<cls>\NeedsTeXFormat{LaTeX2e}
 %<cls>\ProvidesClass{XDUthesis}
 %<cfg>\ProvidesFile{XDUthesis.cfg}
-%<cls|cfg>[2019/04/17 0.1.8 Xidian University Thesis Template]
+%<cls|cfg>[2019/05/11 0.1.9 Xidian University Thesis Template]
 %<*driver>
-\ProvidesFile{XDUthesis.dtx}[2019/04/17 0.1.8 Xidian University Thesis Template]
+\ProvidesFile{XDUthesis.dtx}[2019/05/11 0.1.9 Xidian University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 
 \usepackage[left=4cm,right=3cm,top=3cm,bottom=2cm]{geometry}
@@ -144,8 +144,7 @@ This package consists of the file  XDUthesis.dtx,
 \renewcommand{\footrulewidth}{0pt}}
 \pagestyle{fancy}
 
-\newfontfamily\CouNew{Courier New}
-\def\codebasicfont{\fontfamily{Courier New}\selectfont}
+\def\XDU@codebasicfont{\fontfamily{pcr}\selectfont}
 
 \DefineVerbatimEnvironment{example}{Verbatim}%
   {frame=single,framerule=0.3mm,rulecolor=\color{red!70!green!20!blue!20},%
@@ -167,7 +166,7 @@ This package consists of the file  XDUthesis.dtx,
 %</driver>
 % \fi
 %
-% \CheckSum{981}
+% \CheckSum{1039}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -219,9 +218,9 @@ This package consists of the file  XDUthesis.dtx,
 % \begin{abstract}
 % \noindent
 %  \begin{enumerate}
-%  \item 本模板的前期制作部分参考\href{http://www.ctan.org/pkg/thuthesis}{清华大学学位论文模板}，且遵守 \LaTeX{} Project Public  License，使用前请认真阅读协议内容。
+%  \item 本模板的前期制作部分参考\href{http://www.ctan.org/pkg/thuthesis}{清华大学学位论文模板}以及\href{https://github.com/mohuangrui/ucasthesis}{中国科学院大学学位论文 \LaTeX{} 模板}，且遵守 \LaTeX{} Project Public  License，使用前请认真阅读协议内容。
 %  \item 本模板的制作过程参考\href{http://jwc.xidian.edu.cn}{西安电子科技大学教务处}发布的《本科生毕业设计（论文）工作手册》，仅供\href{http://www.xidian.edu.cn}{西安电子科技大学}本科生撰写毕业设计论文使用。
-%  \item 本模板为作者参考官方工作手册要求个人制作，使用仅供参考，任何由于使用本模板而引起的论 文格式审查问题均与本模板作者无关。
+%  \item 本模板为作者参考官方工作手册要求个人制作，使用仅供参考，任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
 %  \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵守 \LaTeX{}  Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与本模板作者无关。
 %  \end{enumerate}
 % \end{abstract}
@@ -237,7 +236,7 @@ This package consists of the file  XDUthesis.dtx,
 % \pagenumbering{arabic}
 % 
 % \section{模板介绍}
-% \XDUthesis{} 是专为西安电子科技大学本科毕业生而写的\LaTeX{} 模板。
+% \XDUthesis{} 是为西安电子科技大学毕业生而写的\LaTeX{} 模板，目前仅支持本科生毕业论文，硕博暂不支持。
 % 
 % 在此，有关本模板的使用方法以及相关注意事项，将尽可能地在本文中叙述；
 % 遵守本模板中的一些规则，将大大减少论文排版时间。\footnote{因使用者个人修改或未遵守本模板规范，而造成的论文版式不规范，与\XDUthesis{} 模板作者无关。}
@@ -282,7 +281,7 @@ This package consists of the file  XDUthesis.dtx,
 % 
 % \subsection{使用前的准备}
 % 
-% \XDUthesis{} 模板基于ctex中文套件中的ctexbook (2016/02/02 v2.3)而写，因此用户需要确保安装了此版本（或更新）的ctex套件，如没有安装可前往\textbf{CTAN: \url{http://www.ctan.org}} 或者前往\textbf{GitHub(CTeX-org): \url{https://github.com/CTeX-org/ctex-kit/releases}} 下载。
+% \XDUthesis{} 模板基于ctex中文套件中的\pkg{ctexbook}而写，因此用户需要确保安装了ctex套件，如没有安装可前往\textbf{CTAN: \url{http://www.ctan.org}} 或者前往\textbf{GitHub(CTeX-org): \url{https://github.com/CTeX-org/ctex-kit/releases}} 下载。
 % 
 % 除以上，本模板还依赖以下宏包：
 % 
@@ -304,19 +303,7 @@ This package consists of the file  XDUthesis.dtx,
 % \section{如何提问}
 % 这一节本想只介绍如何联系作者本人解决问题呢，后来想想，肯定忙不过来就算了。还是将 \XDUthesis{} 和 \LaTeX{} 本身的疑问分开来叙述比较妥当。
 % \subsection[关于XDUthesis模板的疑问]{关于\XDUthesis{} 模板的疑问}
-% 使用本模板的过程中，如有任何关于本模板的疑问或是不懂之处可通过以下渠道联系作者本人：
-% \begin{itemize}
-% \item 新浪微博：\href{http://weibo.com/StickCui}{I-am-13}. 或手机扫描以下二维码私信作者。
-% 
-% \begin{center}
-% \begin{pspicture}(1.5in,1.5in)
-% \psbarcode{http://weibo.cn/qr/userinfo?uid=3024285285}{includetext guardwhitespace width=1.5 includetext guardwhitespace height=1.5 eclevel=H}{qrcode}
-% \end{pspicture}
-% \end{center}
-% 
-% \item 邮箱：\href{mailto:Stick\_Cui@163.com}{Stick\_Cui@163.com}
-% \end{itemize}
-% 就说上面两个吧，知道作者QQ的童鞋还可以直接私聊。
+% 使用本模板的过程中，如有任何关于本模板的疑问或是不懂之处可通过GitHub提issue或者邮箱联系作者本人：\href{mailto:Stick\_Cui@163.com}{Stick\_Cui@163.com}
 % 
 % \subsection[关于LaTeX的疑问]{关于\LaTeX{} 的疑问}
 % 
@@ -334,8 +321,9 @@ This package consists of the file  XDUthesis.dtx,
 % 
 % 知乎里面的\textbf{\LaTeX{}} 话题以及\textbf{\LaTeX{} 排版与设计}话题下有很多关于排版难题以及技巧的高质量答案。这方面领域的牛人有：\href{http://www.zhihu.com/people/qinglee}{李清}、\href{http://www.zhihu.com/people/li-a-ling}{李阿玲}\footnote{本名：马起园，男，pTeX-ng开发者}、\href{http://www.zhihu.com/people/liu-haiyang}{刘海洋}、\href{http://www.zhihu.com/people/LiamHuang}{孟晨}等。
 % 
-% \item 百度：这个不给链接了，也不多解释了。
+% \item 百度：不多说。
 % \end{itemize}
+% {\color{red} 写作时不要太过于追求文章格式，先把握好内容！！！写作时不要太过于追求文章格式，先把握好内容！！！写作时不要太过于追求文章格式，先把握好内容！！！} 文章版式排的再完美再漂亮，内容不好也没用！！！规范自己文章的学术表达，组织好语言。
 % 
 % \section{使用模板}
 % \subsection{如何编译}\label{SubSec:HowToMake}
@@ -429,10 +417,10 @@ This package consists of the file  XDUthesis.dtx,
 % 以下，给出一个使用本模板写作的样例，并在注释信息中说明每一部分的作用。
 % 
 % \begin{example}
-% \documentclass[WordOneHalf]{XDUthesis}
+% \documentclass[WordOneHalf,print]{XDUthesis}
 % \title{基于ctex套件的模板制作过程}
 % \author{崔元顺}
-% \date{2015年12月02日}%如果是今天可以是\today或省略不写
+% \date{\qquad 年\qquad 月\qquad 日}%据说，论文诚信声明书里的签名和时间都要手写
 % %题目拆分：用于封面
 % %如果论文题目长度<=11中文字符只需填此项即可B项空着
 % \septitleA{基于ctex套件的模板}
@@ -476,9 +464,8 @@ This package consists of the file  XDUthesis.dtx,
 % \chapter{结束语}
 % 
 % \begin{thanksfor}
-%  这里是致谢部分。感谢崔元顺。
+%  这里是致谢部分。感谢爸爸妈妈把我们带到这个世界，并含辛茹苦地把我们抚养长大。
 % 
-%  恩，不客气。
 % \end{thanksfor}
 % 
 % %参考文献
@@ -606,11 +593,17 @@ This package consists of the file  XDUthesis.dtx,
 % \end{enumerate}
 % 
 % \subsubsection{可选参数}
-% 使用时，在模板开始时，即\verb=\documentclass[para]{XDUthesis}=，其中para可以是以下一个或多个：
+% 使用时，在模板开始时，即\verb=\documentclass[para]{XDUthesis}=，其中para可以是以下一个或多个，其中的字体设置中
+% 仅在XeLaTeX和LuaLaTeX下有效；不设置由系统自动检测确定：Windows下为windowsn, Mac下为mac，其他系统默认为Fandol。
 % \begin{itemize}
-%  \item \textbf{Fandol}：使用Fandol字库，此时无幼圆、隶书、微软雅黑字体定义命令，如需使用，请自行设置
 %  \item \textbf{nologo}：封面不使用学校的Logo
-%  \item \textbf{WordOneHalf}：设置行距为Word版的1.5倍行距
+%  \item \textbf{WordOneHalf}：设置行距为Word版的1.5倍行距（近似，默认关闭，但在Demo.txt里默认填写上了）
+%  \item \textbf{contentsnd}: 目录去除点的连接
+%  \item \textbf{print}:  打印样式，保留装订线，默认为预览样式
+%  \item \textbf{windowsn}: 由工作手册指定的字体设置，xelatex 下复制会乱码（不影响打印）
+%  \item \textbf{windowsf}: 宋体的粗体版本由华文中宋替代，PDF复制不会有乱码；粗体黑体会有乱码
+%  \item \textbf{adobe}: 采用对应的Adobe宋体和黑体作为中易宋体和黑体的替代；PDF复制无乱码
+%  \item \textbf{mac}: Mac系统下的字体
 % \end{itemize}
 % 
 % \subsubsection{控制命令}
@@ -647,7 +640,7 @@ This package consists of the file  XDUthesis.dtx,
 % \item[\textbf{C{<length>}}] 表格控制参数：水平居中对齐，列宽为 \verb=<length>= 指定值；
 % 
 % \hspace*{-2em} 以下命令太长，反过来叙述。（别打我）\SaveVerb{zhuanyi}|`|
-% \item[\textbf{代码文件插入}] \verb=\lstinputlisting[<para>]{<file>}=；\footnote{针对PDF\LaTeX{} 引擎，专门添加了转义字符“\,{\CouNew{\UseVerb{zhuanyi}}}\,”，用于代码中显示中文注释、字符串等。}
+% \item[\textbf{代码文件插入}] \verb=\lstinputlisting[<para>]{<file>}=；\footnote{针对PDF\LaTeX{} 引擎，专门添加了转义字符“\,{\UseVerb{zhuanyi}}\,”，用于代码中显示中文注释、字符串等。}
 % 
 % \verb=<file>= 是文件路径及文件名，UTF-8编码（尤其是有中文注释时）。
 % 
@@ -694,14 +687,15 @@ This package consists of the file  XDUthesis.dtx,
 % \item[\textbf{remark}] 注释；
 % \item[\textbf{problem}] 问题；
 % \item[\textbf{conjecture}] 猜想；
+% \item[\textbf{convention}] 惯例;
+% \item[\textbf{property}] 性质;
+% \item[\textbf{transformation}] 变换;
 % \end{itemize}
 % \end{multicols}
 % 
 % \subsection{参考文献数据库}
 % 
-% 首先说明一下本模板的参考文献样式\textbf{XDUbib.bst}文件；此文件是作者在\textbf{plain.bst}样式文件的基础上进行拓展和修改的。里面添加了一些参考文献样式比如网页文章、译著等，修改了硕士学位论文、博士学位论文等的文献样式\footnote{修改后，二者实际上一样。}。
-% 
-% 此外，里面还保留了一些文献的\textbf{plain}样式的文献风格，进一步拓展了其在国内中文文献的参考样式。对于新添加的这些样式内容，只需多添加一个 \verb|lang = {zh}| 参数即可。
+% 首先说明一下本模板的参考文献样式\textbf{gbt7714-unsrt.bst}和\textbf{gbt7714-plain.bst}文件；该样式为GB/T 7714-2015参考文献国家标准。
 % 
 % 下面给出两个参考文献库书写的例子，其他的请参考\textbf{Template.tex} 和\textbf{RefFile.bib} 或者 \textbf{ThesisFiles} 文件夹下的\textbf{Chapters.tex} 和 \textbf{RefFile.bib} 进一步学习如何使用。
 % 
@@ -714,8 +708,7 @@ This package consists of the file  XDUthesis.dtx,
 % month = {6},
 % volume = {23},
 % number = {9},
-% pages = {1-13},
-% lang = {zh}
+% pages = {1-13}
 % }
 % 
 % @Article{ArtE,
@@ -731,7 +724,7 @@ This package consists of the file  XDUthesis.dtx,
 % \end{example}
 % 
 % \section{致谢}
-% 感谢吴凌云、李清、刘海洋等C\TeX{} 套件制作小组的贡献，感谢\textsc{ThuThesis}清华大学学位论文模板的开发人员，在他们这些前辈基础上，才开发出了\XDUthesis{} 西安电子科技大学本科生毕业设计论文模板。
+% 感谢吴凌云、李清、刘海洋等C\TeX{} 套件制作小组的贡献，感谢\textsc{ThuThesis}清华大学学位论文模板的开发人员以及莫晃锐师兄写的国科大学位论文模板，在他们这些前辈基础上，才开发出了\XDUthesis{} 西安电子科技大学本科生毕业设计论文模板。
 % 
 % \phantomsection
 % \addcontentsline{toc}{section}{\refname}
@@ -751,6 +744,9 @@ This package consists of the file  XDUthesis.dtx,
 % \bibitem{ThuThesis}
 % 薛瑞尼. \textsc{ThuThesis}：清华大学学位论文模板[M]. http://www.ctan.org/pkg/thuthesis, 2014, 12.
 % 
+% \bibitem{ThuThesis}
+% 莫晃锐. ucasthesis：国科大学位论文 LaTeX 模板[M]. http://www.ctan.org/pkg/thuthesis, 2014, 12.
+% 
 % \end{thebibliography}
 %
 % \appendix
@@ -763,11 +759,12 @@ This package consists of the file  XDUthesis.dtx,
 % \changes{v0.1.4}{2016/4/27}{修复生成的PDF乱码问题，新添加两个可选指令}
 % \changes{v0.1.5}{2016/05/03}{添加WordOneHalf参数，可选择行间距为Word下的1.5倍行间距}
 % \changes{v0.1.8}{2019/04/16}{修正字体设置}
+% \changes{v0.1.9}{2019/05/11}{新增fandol字体判断；新增print参数增加电子版预览样式（两边等宽）}
 %    \begin{macrocode}
 %<*cls>
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1.8}
+\def\version{0.1.9}
 \LoadClass[a4paper,UTF8,zihao=-4]{ctexbook}
 % LaTeX3 programming environment
 \RequirePackage{expl3}% LaTeX3 programming environment
@@ -793,6 +790,7 @@ This package consists of the file  XDUthesis.dtx,
 \newif\ifXDU@ctex@windows \XDU@ctex@windowsfalse
 \newif\ifXDU@ctex@mac \XDU@ctex@macfalse
 \newif\ifXDU@ctex@adobe \XDU@ctex@adobefalse
+\newif\ifXDU@ctex@fandol \XDU@ctex@fandolfalse
 
 \newif\if@WordOneHalf \@WordOneHalffalse % 默认为LaTeX下的1.5倍行距
 \DeclareOption{WordOneHalf}{\@WordOneHalftrue}
@@ -820,13 +818,15 @@ This package consists of the file  XDUthesis.dtx,
 \fi\fi%
 %    \end{macrocode}
 % 若用户无字体设置要求，则获取ctexbook根据系统自动设置参数
+% \changes{v0.1.9}{2019/05/11}{新增fandol字体判断}
 %    \begin{macrocode}
 \RequirePackage{etoolbox}% a toolbox of programming facilities
 \newcommand{\xduifstreq}{\expandafter\ifstrequal\expandafter}% 
 \xduifstreq{\XDU@ctexfontset}{windows}{\XDU@ctex@windowstrue\XDU@timestrue}{%
 \xduifstreq{\XDU@ctexfontset}{mac}{\XDU@ctex@mactrue\XDU@timestrue}{%
 \xduifstreq{\XDU@ctexfontset}{adobe}{\XDU@ctex@adobetrue\XDU@timestrue}{%
-\XDU@timesfalse}}}
+\xduifstreq{\XDU@ctexfontset}{fandol}{\XDU@ctex@fandoltrue\XDU@timesfalse}{%
+\XDU@timesfalse}}}}
 %    \end{macrocode}
 % 加载 \pkg{ifthen} 用于判断传入参数。确定加载文档类型
 % \changes{v0.1.4}{2016/4/27}{非Windows系统需要修改为Fandol字体族}
@@ -949,6 +949,7 @@ This package consists of the file  XDUthesis.dtx,
 %
 % 此部分设置纸型，页边距以及行距。 
 % \changes{v0.1.5}{2016/05/03}{修正页面边距，添加装订线距离1cm. 增加设置word下1.5倍行距判断}
+% \changes{v0.1.9}{2019/05/11}{默认页面两边对其，便于电子版书写时预览，添加打印参数，打印时恢复手册要求}
 %    \begin{macrocode}
 
 \if@print
@@ -966,6 +967,7 @@ This package consists of the file  XDUthesis.dtx,
 %    \end{macrocode}
 %
 % 此部分设置以及定义全文不同部分用到的页眉格式。
+% \changes{v0.1.9}{2019/05/11}{重定义了目录命令，文章内容目录标题以页眉标题分别设置}
 %    \begin{macrocode}
 \RequirePackage{fancyhdr}
 \setlength{\headheight}{15pt}
@@ -1003,6 +1005,12 @@ This package consists of the file  XDUthesis.dtx,
 \fancyhead[EL]{\zihao{-5}\thepage}
 \renewcommand{\headrulewidth}{0.75pt}
 \renewcommand{\footrulewidth}{0pt}}
+\renewcommand{\tableofcontents}{%
+  \cleardoublepage%
+  \chapter*{\contentsname}%
+  \@mkboth{\XDU@contentsnameheader}{\XDU@contentsnameheader}%
+  \@starttoc{toc}%
+}%
 
 \renewcommand\frontmatter{%
   \if@openright\cleardoublepage\else\clearpage\fi
@@ -1058,6 +1066,7 @@ This package consists of the file  XDUthesis.dtx,
 % \changes{v0.1.6}{2016/05/17}{修正章节标题错误加粗问题 By \href{https://github.com/XDXX}{XDXX}}
 % \changes{v0.1.6}{2016/05/18}{修正目录中章的索引符为空问题，修正为点。感谢 \href{https://github.com/git4xuan}{git4xuan} 同学。}
 % \changes{v0.1.8}{2019/04/17}{根据一位15级的学弟/学妹的提问，添加新的目录样式，新样式去除了标题与页码之间的点连接}
+% \changes{v0.1.9}{2019/05/11}{重新调整了无点连接模式的标题缩进}
 %    \begin{macrocode}
 \ctexset{
  chapter/beforeskip = {20pt},
@@ -1078,11 +1087,11 @@ This package consists of the file  XDUthesis.dtx,
         {}%
     {\textbf{\contentspage}}
   \fi
-  \titlecontents{section}[2em]{\zihao{-4}}%
+  \titlecontents{section}[3.5em]{\zihao{-4}}%
   {\contentslabel{2em}}%
       {}%
   {\textit{\contentspage}}
-  \titlecontents{subsection}[3em]{\zihao{-4}}%
+  \titlecontents{subsection}[6.5em]{\zihao{-4}}%
   {\contentslabel{3em}}%
       {}%
   {\textit{\contentspage}}
@@ -1116,7 +1125,7 @@ This package consists of the file  XDUthesis.dtx,
 %
 % \subsection{控制参数}
 % 此部分定义本模板使用到的控制参数
-%
+% \changes{v0.1.9}{2019/05/11}{新增致谢页眉标题}
 %\begin{macro}{\XDU@define@term}
 %    \begin{macrocode}
 \def\XDU@define@term#1{
@@ -1136,6 +1145,7 @@ This package consists of the file  XDUthesis.dtx,
 %\begin{macro}{\class}
 %\begin{macro}{\supervisor}
 %\begin{macro}{\thanksforname}
+%\begin{macro}{\thanksfornameheader}
 %\begin{macro}{\subject}
 %\begin{macro}{\abstractname}
 %\begin{macro}{\enabstractname}
@@ -1150,10 +1160,12 @@ This package consists of the file  XDUthesis.dtx,
 \XDU@define@term{class}
 \XDU@define@term{supervisor}
 \XDU@define@term{thanksforname}
+\XDU@define@term{thanksfornameheader}
 \XDU@define@term{subject}
 \XDU@define@term{abstractname}
 \XDU@define@term{enabstractname}
 %    \end{macrocode}
+%\end{macro}
 %\end{macro}
 %\end{macro}
 %\end{macro}
@@ -1197,18 +1209,22 @@ This package consists of the file  XDUthesis.dtx,
 %
 % \changes{v0.1}{2015/12/02}{对控制参数以及相关标题进行汉化}
 % \changes{v0.1.4}{2016/4/27}{修复英文关键词名称不准确问题}
+% \changes{v0.1.9}{2019/05/11}{增加摘要、目录的页眉标题定义，使得文章标题内容与页眉标题内容分别定义}
 %    \begin{macrocode}
 %<*cfg>
 %% 摘要
 \abstractname{摘\quad 要}
 \enabstractname{Abstract}
+\newcommand{\XDU@abstractnameheader}{摘要}
+\newcommand{\XDU@contentsnameheader}{目录}
 \newcommand{\XDU@keywordsname}{关键词}
 \newcommand{\XDU@enkeywordsname}{Key words}
 %% 关键词分隔符
 \def\XDU@keywords@separator{\quad }
 \def\XDU@enkeywords@separator{\quad }
 %% 致谢一章的标题名
-\thanksforname{致谢}
+\thanksforname{致\quad 谢}
+\thanksfornameheader{致谢}
 %% 代码标题
 \renewcommand\lstlistingname{代码}
 
@@ -1253,12 +1269,37 @@ This package consists of the file  XDUthesis.dtx,
 %\begin{macro}{\make@abstract}
 % \changes{v0.1.4}{2016/4/27}{新加字体族，用于修正封面页标题英文字体非黑体以及中文摘要关键词中，英文关键词未加粗问题，感谢 \href{https://github.com/lanthree}{lanthree} 同学}
 % \changes{v0.1.8}{2019/4/17}{Times New Roman 正文粗体不正确问题已解决；兼容PDFLaTeX，但貌似不起作用}
+% \changes{v0.1.9}{2019/05/11}{新增fandol字体判断：解决用户不设置字体，非Windows系统下，没有SimHei字体错误。Mac系统下有待验证}
 %    \begin{macrocode}
-\ifXDU@pdftex
-\newcommand{\enheiti}{\fontfamily{SimHei}\selectfont}
-\else
-\newfontfamily\enheiti{SimHei} % 新加字体族，用于修正封面页标题英文字体非黑体问题，感谢lanthree <https://github.com/lanthree>同学
-\fi
+\ifXDU@pdftex%
+  \ifXDU@ctex@fandol%
+    \newcommand{\enheiti}{\fontfamily{FandolHei-Regular.otf}\selectfont}
+  \else%
+    \ifXDU@mac%
+      \ifXDU@ctex@mac% 如果用户选择了Mac字体族，且ctex判断当前系统为Mac时，设置为Heiti SC，否则为SimHei，逻辑有点问题。估计不会有人用Windows系统选Mac字体的吧。
+        \newcommand{\enheiti}{\fontfamily{Heiti SC}\selectfont}
+      \else%
+        \newcommand{\enheiti}{\fontfamily{SimHei}\selectfont}
+      \fi%
+    \else%
+      \newcommand{\enheiti}{\fontfamily{SimHei}\selectfont}
+    \fi%
+  \fi%
+\else%
+  \ifXDU@ctex@fandol%
+    \newfontfamily\enheiti{FandolHei-Regular.otf}
+  \else%
+    \ifXDU@mac%
+      \ifXDU@ctex@mac%
+        \newfontfamily\enheiti{Heiti SC}
+      \else%
+        \newfontfamily\enheiti{SimHei}
+      \fi%
+    \else%
+      \newfontfamily\enheiti{SimHei} % 新加字体族，用于修正封面页标题英文字体非黑体问题，感谢lanthree <https://github.com/lanthree>同学
+    \fi%
+  \fi%
+\fi%
 % \newfontfamily\timesbd{Times New Roman Bold} % 新加字体族，用于修正中文摘要关键词中，英文关键词未加粗问题，感谢lanthree <https://github.com/lanthree>同学
 \def\make@abstract{%
 \cleardoublepage%
@@ -1407,7 +1448,6 @@ This package consists of the file  XDUthesis.dtx,
 %<*cfg>
 %% 以下内容勿动
 \subject{本科毕业设计论文}
-\newcommand{\XDU@abstractnameheader}{摘要}
 \newcommand{\XDU@classname}{班\quad 级}
 \newcommand{\XDU@schoolnumbername}{学\quad 号}
 \newcommand{\XDU@titlename}{题\qquad 目}
@@ -1507,7 +1547,7 @@ This package consists of the file  XDUthesis.dtx,
 % 定义致谢环境，用于致谢一章；
 %    \begin{macrocode}
 \newenvironment{thanksfor}{\backmatter
-\chapter{\XDU@thanksforname}}{\comtinuematter}
+\chapter[\XDU@thanksfornameheader]{\XDU@thanksforname}}{\comtinuematter}
 %    \end{macrocode}
 %
 % \subsection{其他细节}
@@ -1541,6 +1581,7 @@ This package consists of the file  XDUthesis.dtx,
 %
 % \changes{v0.1}{2015/12/02}{其他配置}
 % \changes{v0.1.8}{2019/04/17}{修改备用字体设置}
+% \changes{v0.1.9}{2019/05/11}{新增三个定理环境；修改目录标题为中间带空格的}
 %    \begin{macrocode}
 %<*cfg>
 %% 定理类声明：来自清华大学LaTeX模板

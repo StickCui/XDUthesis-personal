@@ -23,6 +23,8 @@ Xidian University thesis template
 	
 	感谢 [BDZNH](https://github.com/BDZNH) 同学提供的链接地址。
 
+- 在 Demo.tex 中的 `1.1.1 字体设置` 一节，我花式使用了各种 Windows 字体以展示各种字体的使用方式，非 Windows 系统用户编译预览文档时可以注释掉这一节内容。
+
 ## 使用方法
 
 **使用前，请仔细阅读 XDUthesis.pdf 模板用户手册！**
@@ -87,6 +89,13 @@ Xidian University thesis template
 		+ Makefile - Linxu/Mac用的Makefile
 
 ## 更新记录
+- v0.1.9 版本更新，详情如下：
+	- 新增 fandol 字体判断:解决用户不设置字体,非 Windows 系统下,没有 SimHei 字体错误。Mac 系统下有待验证
+	- 增加摘要、目录以及致谢的页眉标题定义，使得文章标题内容与页眉标题内容分别显示：即，内容标题中间有空格，页眉标题/以及目录中没有空格分隔
+	- 新增 `print` 参数，在打印论文时留出装订线距离（之前版本默认的）；增加电子版预览样式(两边等宽)，默认开启，但在Demo.tex设置了 `print` 还原回了之前版本默认的打印模式。感谢 [BDZNH](https://github.com/BDZNH) 同学
+	- 新增三个定理环境，感谢 [BDZNH](https://github.com/BDZNH) 同学
+	- 重定义了目录，重定义了目录命令,文章内容目录标题以页眉标题能够分别设置
+	- 重新调整了目录无点连接模式的标题缩进参数，使之与正常模式缩进相同
 - v0.1.8 版本更新，详情如下：
 	- 重新兼容了PDFLaTeX，可能有些地方会不太理想（目前问题是标题西文字体无法设置为黑体，以及正文西文字体非 Times New Roman 只是很像而已）
 	- 去除了Fandol字体的默认支持，改由系统自行判断决定
