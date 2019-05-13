@@ -166,7 +166,7 @@ This package consists of the file  XDUthesis.dtx,
 %</driver>
 % \fi
 %
-% \CheckSum{1039}
+% \CheckSum{1042}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -294,7 +294,7 @@ This package consists of the file  XDUthesis.dtx,
 % \pkg{ntheorem} & \pkg{natbib} & \pkg{appendix} & \pkg{listings} & \pkg{longtable} & \pkg{multirow}\\
 % \pkg{hhline} & \pkg{tabularx} & \pkg{array} & \pkg{makecell} & \pkg{colortbl} & \pkg{booktabs}\\
 % \pkg{hyperref} & \pkg{geometry} & \pkg{fancyhdr} & \pkg{CJKfntef} & \pkg{subcaption} & \pkg{setspace}\\
-% \pkg{blindtext} & \pkg{pifont} &&&&\\
+% \pkg{blindtext} & \pkg{pifont} & \pkg{algpseudocode} & \pkg{algorithm}  & \pkg{algorithmicx} &\\
 % \hline
 % \end{tabular}
 % \end{table}
@@ -944,6 +944,11 @@ This package consists of the file  XDUthesis.dtx,
 ]{hyperref}
 %    \end{macrocode}
 %
+% 算法宏包
+%    \begin{macrocode}
+\RequirePackage{algpseudocode,algorithm,algorithmicx}
+\def\ALG@name{{算法}} %% 更改 “Algorithm” 为 “算法”，这里借鉴中国科学院大学Latex模板  
+%    \end{macrocode}
 % \subsection{页面设置部分}
 % 按照我校工作手册，进行页面设置；
 %
@@ -1345,8 +1350,8 @@ This package consists of the file  XDUthesis.dtx,
   \raggedleft
   \renewcommand{\arraystretch}{1.3}
   \begin{tabular}{c c}
-    \textbf{\zihao{-4}\XDU@classname} & \uline{~\textbf{\zihao{-4}\XDU@class}~}\\
-    \textbf{\zihao{-4}\XDU@schoolnumbername} & \uline{~\textbf{\zihao{-4}{\XDU@schoolnumber}}~}\\
+    \textbf{\zihao{-4}\XDU@classname}        & \textbf{\zihao{-4}\XDU@class}          \\ \cline{2-2}
+    \textbf{\zihao{-4}\XDU@schoolnumbername} & \textbf{\zihao{-4}{\XDU@schoolnumber}} \\ \cline{2-2}
   \end{tabular}
 \end{table}
 \if@WordOneHalf
