@@ -166,7 +166,7 @@ This package consists of the file  XDUthesis.dtx,
 %</driver>
 % \fi
 %
-% \CheckSum{1042}
+% \CheckSum{1047}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -946,8 +946,10 @@ This package consists of the file  XDUthesis.dtx,
 %
 % 算法宏包
 %    \begin{macrocode}
-\RequirePackage{algpseudocode,algorithm,algorithmicx}
+\RequirePackage[chapter]{algorithm}
+\RequirePackage{algpseudocode,algorithmicx}
 \def\ALG@name{{算法}} %% 更改 “Algorithm” 为 “算法”，这里借鉴中国科学院大学Latex模板  
+\renewcommand{\thealgorithm}{\arabic{chapter}.\arabic{algorithm}} %% 算法编号跟随章编号
 %    \end{macrocode}
 % \subsection{页面设置部分}
 % 按照我校工作手册，进行页面设置；
