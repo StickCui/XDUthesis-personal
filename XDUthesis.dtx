@@ -166,7 +166,7 @@ This package consists of the file  XDUthesis.dtx,
 %</driver>
 % \fi
 %
-% \CheckSum{1042}
+% \CheckSum{1054}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -946,8 +946,10 @@ This package consists of the file  XDUthesis.dtx,
 %
 % 算法宏包
 %    \begin{macrocode}
-\RequirePackage{algpseudocode,algorithm,algorithmicx}
+\RequirePackage[chapter]{algorithm}
+\RequirePackage{algpseudocode,algorithmicx}
 \def\ALG@name{{算法}} %% 更改 “Algorithm” 为 “算法”，这里借鉴中国科学院大学Latex模板  
+\renewcommand{\thealgorithm}{\arabic{chapter}.\arabic{algorithm}} %% 算法编号跟随章编号
 %    \end{macrocode}
 % \subsection{页面设置部分}
 % 按照我校工作手册，进行页面设置；
@@ -1311,6 +1313,7 @@ This package consists of the file  XDUthesis.dtx,
 \pagenumbering{roman}
 \pagestyle{myheadings}
 \phantomsection
+\pdfbookmark[1]{\XDU@abstractnameheader}{abscn}  %% 添加摘要页到书签
 %\addcontentsline{toc}{chapter}{\XDU@abstractname}%目录中不需要
 \vspace*{2em}
 \centerline{\heiti\chaptersize\XDU@abstractname}\vskip5pt\par%
@@ -1321,6 +1324,7 @@ This package consists of the file  XDUthesis.dtx,
 \cleardoublepage%
 \pagestyle{headings}
 \phantomsection
+\pdfbookmark[1]{\XDU@enabstractname}{absen}  %% 添加Abstract页到书签
 %\addcontentsline{toc}{chapter}{\XDU@enabstractname}%目录中不需要
 \vspace*{2em}
 \centerline{\textbf{\chaptersize\XDU@enabstractname}}\vskip5pt\par%
@@ -1344,6 +1348,7 @@ This package consists of the file  XDUthesis.dtx,
 % \changes{v0.1.8}{2019/04/17}{重新修正封面}
 %    \begin{macrocode}
 \def\maketitle{
+\pdfbookmark[1]{{封面}}{cover}  %% 添加封面到书签
 \begin{titlepage}
 %%  封面右上角班级学号格式
 \begin{table}
@@ -1441,6 +1446,7 @@ This package consists of the file  XDUthesis.dtx,
 \make@abstract%
 
 \frontmatter
+\pdfbookmark[1]{\XDU@contentsnameheader}{toc}  %% 添加目录页到书签
 \tableofcontents%
 \mainmatter
 }
