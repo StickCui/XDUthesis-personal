@@ -96,9 +96,9 @@ This package consists of the file  XDUthesis.dtx,
 %<cls>\NeedsTeXFormat{LaTeX2e}
 %<cls>\ProvidesClass{XDUthesis}
 %<cfg>\ProvidesFile{XDUthesis.cfg}
-%<cls|cfg>[2019/05/11 0.1.9 Xidian University Thesis Template]
+%<cls|cfg>[2021/02/25 0.1.10 Xidian University Thesis Template]
 %<*driver>
-\ProvidesFile{XDUthesis.dtx}[2019/05/11 0.1.9 Xidian University Thesis Template]
+\ProvidesFile{XDUthesis.dtx}[2021/02/25 0.1.10 Xidian University Thesis Template]
 \documentclass[10pt]{ltxdoc}
 
 \usepackage[left=4cm,right=3cm,top=3cm,bottom=2cm]{geometry}
@@ -110,6 +110,16 @@ This package consists of the file  XDUthesis.dtx,
 \usepackage{metalogo,xcolor}
 \usepackage{pst-barcode}%
 \usepackage{fancyvrb,CJKfntef}
+\makeatletter
+\@ifundefined{CJKunderline}%
+  {%
+    % \CJKunderline not defined
+    \usepackage{xeCJKfntef}
+  }
+  {%
+    % \CJKunderline defined
+  }%
+\makeatother
 \usepackage[bookmarks=true,%
     linkcolor=black,%
     citecolor=black,%
@@ -166,7 +176,7 @@ This package consists of the file  XDUthesis.dtx,
 %</driver>
 % \fi
 %
-% \CheckSum{1054}
+% \CheckSum{1058}
 % \CharacterTable
 %  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
 %   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
@@ -210,7 +220,7 @@ This package consists of the file  XDUthesis.dtx,
 % 
 % \maketitle\thispagestyle{empty}
 % \begin{abstract}
-%  本模板旨在减轻排版工作量，使得学生专注于论文质量本身。鉴于初级阶段，仅包含本科毕业设计论文% 部分。
+%  本模板旨在减轻排版工作量，使得学生专注于论文质量本身。鉴于项目仍处于初级阶段，仅包含本科毕业设计论文部分。
 % \end{abstract}
 % 
 % \vspace*{2em}
@@ -764,7 +774,7 @@ This package consists of the file  XDUthesis.dtx,
 %<*cls>
 \hyphenation{XDU-Thesis}
 \def\XDUthesis{X\kern -.1667em\lower .5ex\hbox {D}\kern -.125emU\textit{thesis}{}}
-\def\version{0.1.9}
+\def\version{0.1.10}
 \LoadClass[a4paper,UTF8,zihao=-4]{ctexbook}
 % LaTeX3 programming environment
 \RequirePackage{expl3}% LaTeX3 programming environment
@@ -828,6 +838,12 @@ This package consists of the file  XDUthesis.dtx,
 \xduifstreq{\XDU@ctexfontset}{fandol}{\XDU@ctex@fandoltrue\XDU@timesfalse}{%
 \XDU@timesfalse}}}}
 %    \end{macrocode}
+% \changes{v0.1.7}{2016/05/23}{删除fontenc宏包，使得正文英文字体相关设置生效}
+% \changes{v0.1.10}{2021/02/25}{调整数学公式宏包的加载位置}
+% 数学公式宏包
+%    \begin{macrocode}
+\RequirePackage{amsmath,amssymb}
+%    \end{macrocode}
 % 加载 \pkg{ifthen} 用于判断传入参数。确定加载文档类型
 % \changes{v0.1.4}{2016/4/27}{非Windows系统需要修改为Fandol字体族}
 % \changes{v0.1.7}{2016/05/23}{中文Fandol字体族下，添加英文字体设置，防止默认字体不符合要求}
@@ -888,11 +904,6 @@ This package consists of the file  XDUthesis.dtx,
 %    \begin{macrocode}
 \RequirePackage{xcolor}
 %    \end{macrocode}
-% \changes{v0.1.7}{2016/05/23}{删除fontenc宏包，使得正文英文字体相关设置生效}
-% 数学公式宏包
-%    \begin{macrocode}
-\RequirePackage{amsmath,amssymb}
-%    \end{macrocode}
 % 插图宏包
 %    \begin{macrocode}
 \RequirePackage{graphicx}
@@ -916,8 +927,17 @@ This package consists of the file  XDUthesis.dtx,
 \RequirePackage{listings}
 %    \end{macrocode}
 % 色中文的下划线类宏包
+% \changes{v0.1.10}{2021/02/25}{修复 ctex 移除 xeCJKfntef 默认加载以及CJKfntef宏包xetex下不起作用导致的下划线相关命令未定义错误}
 %    \begin{macrocode}
 \RequirePackage{CJKfntef}
+\@ifundefined{CJKunderline}%
+  {%
+    % \CJKunderline not defined
+    \usepackage{xeCJKfntef}
+  }
+  {%
+    % \CJKunderline defined
+  }%
 %    \end{macrocode}
 % 表格相关的宏包（含设置）以及图表标题、子图表相关宏包
 % \changes{v0.1.6}{2016/05/18}{修该原来图表编号后冒号为大空格，符合工作手册的样例。感谢 \href{https://github.com/git4xuan}{git4xuan} 同学。}
@@ -1105,9 +1125,9 @@ This package consists of the file  XDUthesis.dtx,
 \else
   \ifXDU@pdftex
     \titlecontents{chapter}[0em]{\songti\bfseries}%
-    	{\thecontentslabel}%
+        {\thecontentslabel}%
         {\hspace*{0em}}%
-    	{\titlerule*[10bp]{\textbf{.}}\textbf{\contentspage}}
+        {\titlerule*[10bp]{\textbf{.}}\textbf{\contentspage}}
   \else
     \titlecontents{chapter}[0em]{\bfseries}%
     {\thecontentslabel}%
@@ -1567,7 +1587,7 @@ This package consists of the file  XDUthesis.dtx,
 %    \begin{macrocode}
 \def\XDU@setpdf@keywords{
     \hypersetup{
-	    pdfkeywords={\XDU@keywords}
+        pdfkeywords={\XDU@keywords}
     }
 }
 %    \end{macrocode}

@@ -89,6 +89,15 @@ Xidian University thesis template
 		+ Makefile - Linxu/Mac用的Makefile
 
 ## 更新记录
+- v0.1.10 版本更新，详情如下：
+    - 修复了 TeXLive 2020 下模板文件无法生成错误，以及 xelatex/pdflatex 编译，下划线等命令失效或报错问题。
+    - 上述问题一部分是由于新版本的 ctex 套件移除了 xeCJKfntef 包的加载以及 CJKfntef 包 xetex 下不起作用引起的。一部分是由于 amsmath 包的加载顺序导致的(pdflatex 下引入了新的数学字体包)。
+    - 此外，尚有一个问题暂未完全解决，即更新了 fancyhdr 包版本到 v4.0+ 的话，生成的 pdf 中页眉的标题编号会变成英文的 “CHAPTER 1.”，参见[ctex-kit issue 554](https://github.com/CTeX-org/ctex-kit/issues/554)，以及[fduthesis issue 174](https://github.com/stone-zeng/fduthesis/issues/174). 比较靠谱的解决方案是对 fancyhdr 降级，在终端中执行如下命令：
+        ```Bash
+        tlmgr restore fancyhdr 49886
+        ```
+    fancyhdr 和 ctex 均已有了解决方案，问题正在修复，之后再更新官方应该会解决该问题。
+
 - v0.1.9 版本更新，详情如下：
 	- 新增 fandol 字体判断:解决用户不设置字体,非 Windows 系统下,没有 SimHei 字体错误。Mac 系统下有待验证
 	- 增加摘要、目录以及致谢的页眉标题定义，使得文章标题内容与页眉标题内容分别显示：即，内容标题中间有空格，页眉标题/以及目录中没有空格分隔
