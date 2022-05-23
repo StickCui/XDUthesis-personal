@@ -953,6 +953,7 @@ This package consists of the file  XDUthesis.dtx,
 %    \end{macrocode}
 % 超链接以及PDF书签相关宏包
 %    \begin{macrocode}
+\RequirePackage{setspace} %% 该包应该放在 hyperref 包之前
 \RequirePackage[bookmarks=true,
     linkcolor=black,
     citecolor=black,
@@ -978,14 +979,13 @@ This package consists of the file  XDUthesis.dtx,
 % \changes{v0.1.5}{2016/05/03}{修正页面边距，添加装订线距离1cm. 增加设置word下1.5倍行距判断}
 % \changes{v0.1.9}{2019/05/11}{默认页面两边对其，便于电子版书写时预览，添加打印参数，打印时恢复手册要求}
 %    \begin{macrocode}
-
 \if@print
     \RequirePackage[a4paper,left=4cm,right=2cm,top=3cm,bottom=2cm]{geometry}
 \else
     \RequirePackage[a4paper,left=3cm,right=3cm,top=3cm,bottom=2cm]{geometry}
 \fi
 
-\RequirePackage{setspace}
+%% setspace
 \if@WordOneHalf
   \setstretch{1.62}%设置Word下的行距1.5倍
 \else
